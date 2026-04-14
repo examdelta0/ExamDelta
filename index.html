@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExamZen – Ace Your NEET & JEE</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fff;--bg2:#f8fafc;--bg3:#f1f5f9;
+  --surface:#fff;--border:#e2e8f0;--border2:#cbd5e1;
+  --text:#1e293b;--text2:#475569;--text3:#94a3b8;
+  --brand:#2563eb;--brand-bg:#eff6ff;--brand-border:#bfdbfe;
+  --neet:#16a34a;--neet-bg:#dcfce7;--neet-dark:#15803d;
+  --jee:#ea580c;--jee-bg:#ffedd5;--jee-dark:#c2410c;
+  --easy:#15803d;--easy-bg:#f0fdf4;--easy-b:#86efac;
+  --mod:#c2410c;--mod-bg:#fff7ed;--mod-b:#fdba74;
+  --hard:#b91c1c;--hard-bg:#fef2f2;--hard-b:#fca5a5;
+  --r:12px;--r-sm:8px;--r-lg:16px;--r-xl:24px;
+  --shadow:0 4px 16px rgba(0,0,0,.07);
+  --shadow-lg:0 16px 48px rgba(0,0,0,.12);
+}
+[data-theme="dark"]{
+  --bg:#0f172a;--bg2:#1e293b;--bg3:#334155;
+  --surface:#1e293b;--border:#334155;--border2:#475569;
+  --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
+  --brand-bg:#1e3a8a;--brand-border:#3b82f6;
+  --neet-bg:#052e16;--jee-bg:#431407;
+  --easy-bg:#052e16;--easy-b:#166534;
+  --mod-bg:#431407;--mod-b:#9a3412;
+  --hard-bg:#450a0a;--hard-b:#991b1b;
+  --shadow:0 4px 16px rgba(0,0,0,.4);
+  --shadow-lg:0 16px 48px rgba(0,0,0,.5);
+}
+html,body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px;line-height:1.6;min-height:100vh;transition:background .2s,color .2s}
+.hidden{display:none!important}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 20px}
+.nav-in{width:100%;max-width:1100px;margin:0 auto;display:flex;align-items:center}
+.nav-logo{font-size:21px;font-weight:800;color:var(--text);cursor:pointer;letter-spacing:-.5px;margin-right:auto}
+.nav-logo span{color:var(--brand)}
+.nav-links{display:flex;gap:2px;margin-right:12px}
+.nav-lnk{font-size:13px;color:var(--text2);cursor:pointer;padding:6px 10px;border-radius:var(--r-sm);transition:all .15s;font-weight:500}
+.nav-lnk:hover,.nav-lnk.active{background:var(--bg2);color:var(--text)}
+.dark-btn{width:34px;height:34px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;margin-right:8px}
+.dark-btn:hover{background:var(--bg2)}
+.btn-start{font-size:13px;font-weight:700;color:#fff;background:var(--brand);border:none;border-radius:var(--r-sm);padding:8px 16px;cursor:pointer}
+.btn-start:hover{background:#1d4ed8}
+
+/* HERO */
+.hero{background:var(--bg2);padding:64px 20px 48px;text-align:center;border-bottom:1px solid var(--border)}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--brand);background:var(--brand-bg);border:1px solid var(--brand-border);border-radius:20px;padding:4px 12px;margin-bottom:16px}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--brand);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-2px;margin-bottom:12px;line-height:1.1;color:var(--text)}
+.hero h1 .grad{background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:16px;color:var(--text2);max-width:460px;margin:0 auto 26px;line-height:1.7}
+.hero-btns{display:flex;gap:10px;justify-content:center;margin-bottom:36px;flex-wrap:wrap}
+.hero-btn-p{font-size:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,#2563eb,#7c3aed);border:none;border-radius:50px;padding:13px 28px;cursor:pointer;transition:all .2s}
+.hero-btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.3)}
+.hero-btn-s{font-size:14px;font-weight:600;color:var(--text2);background:var(--surface);border:1.5px solid var(--border2);border-radius:50px;padding:12px 24px;cursor:pointer;transition:all .2s}
+.hero-btn-s:hover{border-color:var(--brand);color:var(--brand)}
+.hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.hs-n{font-size:28px;font-weight:800;color:var(--text);letter-spacing:-1px}
+.hs-l{font-size:12px;color:var(--text3);margin-top:2px;font-weight:500}
+
+/* NO QUESTIONS BANNER */
+.no-q-banner{background:#fffbeb;border:2px solid #fde68a;border-radius:var(--r-lg);padding:20px 24px;margin:24px auto;max-width:700px;display:flex;align-items:flex-start;gap:14px}
+[data-theme="dark"] .no-q-banner{background:#1c1408;border-color:#78350f}
+.no-q-icon{font-size:28px;flex-shrink:0;margin-top:2px}
+.no-q-title{font-size:15px;font-weight:700;color:#92400e;margin-bottom:4px}
+[data-theme="dark"] .no-q-title{color:#fbbf24}
+.no-q-steps{font-size:13px;color:#a16207;line-height:1.8}
+[data-theme="dark"] .no-q-steps{color:#d97706}
+.no-q-steps strong{font-weight:700}
+
+/* SECTIONS */
+.sec{padding:56px 20px;max-width:1100px;margin:0 auto}
+.sec-ctr{text-align:center;margin-bottom:40px}
+.sec-eye{font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}
+.sec-ttl{font-size:30px;font-weight:800;color:var(--text);letter-spacing:-1px;margin-bottom:10px}
+.sec-sub{font-size:15px;color:var(--text2);max-width:440px;margin:0 auto}
+
+/* EXAM CARDS */
+.exam-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.exam-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r-xl);padding:36px 28px;text-align:center;cursor:pointer;transition:all .22s;position:relative;overflow:hidden}
+.exam-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.exam-card.neet::before{background:linear-gradient(90deg,#16a34a,#4ade80)}
+.exam-card.jee::before{background:linear-gradient(90deg,#ea580c,#fb923c)}
+.exam-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border2)}
+.ec-icon{width:68px;height:68px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:30px}
+.exam-card.neet .ec-icon{background:var(--neet-bg)}
+.exam-card.jee .ec-icon{background:var(--jee-bg)}
+.ec-title{font-size:24px;font-weight:800;color:var(--text);margin-bottom:8px}
+.ec-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:18px}
+.ec-pills{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.ec-pill{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.exam-card.neet .ec-pill{background:var(--neet-bg);color:var(--neet-dark)}
+.exam-card.jee .ec-pill{background:var(--jee-bg);color:var(--jee-dark)}
+.ec-btn{width:100%;font-size:14px;font-weight:700;color:#fff;border:none;border-radius:50px;padding:13px;cursor:pointer;transition:all .2s}
+.exam-card.neet .ec-btn{background:linear-gradient(135deg,#16a34a,#22c55e)}
+.exam-card.jee .ec-btn{background:linear-gradient(135deg,#ea580c,#f97316)}
+.ec-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.18)}
+
+/* FEATURES */
+.feat-bg{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;transition:all .18s}
+.feat-card:hover{border-color:var(--border2);box-shadow:var(--shadow);transform:translateY(-2px)}
+.feat-ico{font-size:26px;margin-bottom:10px}
+.feat-ttl{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px}
+.feat-desc{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* BADGES */
+.badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;display:inline-block}
+.b-easy{background:var(--easy-bg);color:var(--easy)}
+.b-mod{background:var(--mod-bg);color:var(--mod)}
+.b-hard{background:var(--hard-bg);color:var(--hard)}
+.b-neet{background:var(--neet-bg);color:var(--neet-dark)}
+.b-jee{background:var(--jee-bg);color:var(--jee-dark)}
+.b-pyq{background:#fdf4ff;color:#7c3aed;border:1px solid #e9d5ff}
+[data-theme="dark"] .b-pyq{background:#2e1065;color:#c4b5fd}
+.b-gray{background:var(--bg3);color:var(--text3)}
+
+/* BUTTONS */
+.btn-p{font-size:13px;font-weight:700;color:#fff;background:var(--brand);border:none;border-radius:var(--r-sm);padding:10px 20px;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.btn-p:hover{background:#1d4ed8;transform:translateY(-1px)}
+.btn-p:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-s{font-size:13px;font-weight:600;color:var(--text2);background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px 16px;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.btn-s:hover{border-color:var(--border2);background:var(--bg2)}
+.btn-submit{font-size:13px;font-weight:700;color:#fff;background:linear-gradient(135deg,#16a34a,#22c55e);border:none;border-radius:var(--r-sm);padding:10px 18px;cursor:pointer}
+.btn-green{font-size:13px;font-weight:700;color:#fff;background:linear-gradient(135deg,#16a34a,#22c55e);border:none;border-radius:var(--r-sm);padding:10px 20px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.btn-submit:hover{opacity:.88}
+
+/* FORMS */
+.form-input,.form-select{font-size:13px;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px 12px;background:var(--surface);color:var(--text);outline:none;transition:border-color .15s;font-family:inherit}
+.form-input:focus,.form-select:focus{border-color:var(--brand)}
+
+/* MODAL */
+.modal-wrap{position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;padding:12px;overflow-y:auto}
+.modal-wrap.open{display:flex}
+.modal-box{width:100%;max-width:760px;background:var(--surface);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);overflow:hidden;animation:mUp .25s cubic-bezier(.34,1.4,.64,1);margin:auto}
+@keyframes mUp{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.modal-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
+.modal-ttl{font-size:15px;font-weight:700;color:var(--text)}
+.modal-close{width:30px;height:30px;border-radius:7px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:17px;color:var(--text2);display:flex;align-items:center;justify-content:center;line-height:1}
+.modal-close:hover{background:var(--bg2)}
+.modal-body{padding:20px}
+.modal-ftr{padding:12px 20px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg2)}
+
+/* STEP BAR */
+.step-row{display:flex;align-items:center;margin-bottom:20px;gap:0}
+.step-it{display:flex;align-items:center;flex:1;min-width:0}
+.step-c{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;transition:all .2s}
+.step-c.done{background:var(--brand);color:#fff}
+.step-c.active{background:var(--brand);color:#fff;box-shadow:0 0 0 4px var(--brand-bg)}
+.step-c.pend{background:var(--bg3);color:var(--text3);border:1.5px solid var(--border)}
+.step-ln{flex:1;height:2px;background:var(--border);min-width:20px}
+.step-ln.done{background:var(--brand)}
+
+/* SUBJECT CARDS */
+.subj-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.subj-card{border:2px solid var(--border);border-radius:var(--r-lg);padding:14px;cursor:pointer;background:var(--surface);display:flex;align-items:center;gap:10px;transition:all .18s}
+.subj-card:hover{border-color:var(--brand);background:var(--brand-bg);transform:translateX(3px)}
+.subj-ico{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.subj-nm{font-size:13px;font-weight:700;color:var(--text)}
+.subj-cnt{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* DIFF CARDS */
+.diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.diff-card{border:2px solid var(--border);border-radius:var(--r-lg);padding:16px 8px;cursor:pointer;text-align:center;transition:all .18s;background:var(--surface)}
+.diff-card:hover,.diff-card.sel{transform:translateY(-2px);box-shadow:var(--shadow)}
+.diff-card.easy:hover,.diff-card.easy.sel{border-color:var(--neet);background:var(--easy-bg)}
+.diff-card.mod:hover,.diff-card.mod.sel{border-color:var(--jee);background:var(--mod-bg)}
+.diff-card.hard:hover,.diff-card.hard.sel{border-color:#dc2626;background:var(--hard-bg)}
+.diff-card.all:hover,.diff-card.all.sel{border-color:var(--brand);background:var(--brand-bg)}
+.diff-nm{font-size:13px;font-weight:700;margin-top:6px}
+.diff-card.easy .diff-nm{color:var(--easy)}
+.diff-card.mod .diff-nm{color:var(--mod)}
+.diff-card.hard .diff-nm{color:var(--hard)}
+.diff-card.all .diff-nm{color:var(--brand)}
+.diff-cnt{font-size:11px;color:var(--text3);margin-top:3px}
+
+/* CHAPTER LIST */
+.ch-list{display:flex;flex-direction:column;gap:5px;max-height:340px;overflow-y:auto;padding-right:2px}
+.ch-list::-webkit-scrollbar{width:4px}
+.ch-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.ch-item{border:1.5px solid var(--border);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.ch-item.sel{border-color:var(--brand-border)}
+.ch-head{display:flex;align-items:center;gap:8px;padding:10px 12px;cursor:pointer}
+.ch-head:hover{background:var(--bg2)}
+.ch-chk{width:17px;height:17px;border-radius:4px;border:2px solid var(--border2);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.ch-chk.on{background:var(--brand);border-color:var(--brand)}
+.ch-chk.on::after{content:'';display:block;width:4px;height:8px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg) translate(-1px,-1px)}
+.ch-num{width:20px;height:20px;border-radius:5px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--text3);flex-shrink:0}
+.ch-nm{font-size:13px;font-weight:600;color:var(--text);flex:1}
+.ch-cnt{font-size:11px;color:var(--text3)}
+.ch-arr{width:16px;height:16px;background:var(--bg3);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--text3);transition:transform .2s;flex-shrink:0}
+.ch-arr.open{transform:rotate(90deg)}
+.tp-area{padding:7px 12px 9px 38px;background:var(--bg2);border-top:1px solid var(--border);display:flex;flex-direction:column;gap:3px}
+.tp-row{display:flex;align-items:center;gap:7px;cursor:pointer;padding:3px 6px;border-radius:5px;transition:background .12s}
+.tp-row:hover{background:var(--bg3)}
+.t-chk{width:14px;height:14px;border-radius:3px;border:2px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.t-chk.on{background:var(--brand);border-color:var(--brand)}
+.t-chk.on::after{content:'';display:block;width:3px;height:6px;border:1.5px solid #fff;border-top:none;border-left:none;transform:rotate(45deg) translate(-1px,-1px)}
+.t-nm{font-size:12px;color:var(--text2)}
+
+/* TEST */
+.test-hdr{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.test-timer{font-size:14px;font-weight:800;color:var(--text);background:var(--surface);border:1.5px solid var(--border);border-radius:7px;padding:5px 12px;margin-left:auto;display:flex;align-items:center;gap:5px}
+.test-timer.warn{color:#dc2626;border-color:#fca5a5;animation:tW 1s infinite}
+@keyframes tW{0%,100%{background:var(--surface)}50%{background:#fef2f2}}
+.q-palette{display:flex;flex-wrap:wrap;gap:4px;padding:10px 20px;background:var(--bg2);border-bottom:1px solid var(--border)}
+.q-dot{width:26px;height:26px;border-radius:6px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;cursor:pointer;color:var(--text3);background:var(--surface);transition:all .15s}
+.q-dot.answered{background:var(--brand);color:#fff;border-color:var(--brand)}
+.q-dot.saved{background:#f59e0b;color:#fff;border-color:#d97706}
+.q-dot.current{box-shadow:0 0 0 2px var(--brand),0 0 0 4px var(--brand-bg)}
+.test-body{padding:20px}
+.q-img{max-width:100%;border-radius:var(--r);margin-bottom:14px;border:1px solid var(--border);max-height:260px;object-fit:contain;display:block}
+.q-text{font-size:15px;font-weight:600;color:var(--text);line-height:1.7;margin-bottom:18px}
+.opts-list{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.opt-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border:2px solid var(--border);border-radius:var(--r);cursor:pointer;transition:all .18s;background:var(--surface)}
+.opt-row:hover:not(.dis){border-color:var(--brand);background:var(--brand-bg);transform:translateX(2px)}
+.opt-row.sel{border-color:var(--brand);background:var(--brand-bg)}
+.opt-row.cor{border-color:var(--neet);background:var(--easy-bg)}
+.opt-row.wrg{border-color:#dc2626;background:var(--hard-bg)}
+.opt-letter{width:26px;height:26px;border-radius:7px;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;color:var(--text3);transition:all .15s}
+.opt-row.sel .opt-letter{background:var(--brand);border-color:var(--brand);color:#fff}
+.opt-row.cor .opt-letter{background:var(--neet);border-color:var(--neet);color:#fff}
+.opt-row.wrg .opt-letter{background:#dc2626;border-color:#dc2626;color:#fff}
+.opt-text{font-size:13px;color:var(--text);font-weight:500;flex:1}
+.test-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bm-btn{font-size:12px;font-weight:600;color:#f59e0b;background:#fffbeb;border:1.5px solid #fde68a;border-radius:var(--r-sm);padding:7px 12px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
+.bm-btn:hover,.bm-btn.saved{background:#f59e0b;color:#fff;border-color:#d97706}
+[data-theme="dark"] .bm-btn{background:#1c1408;border-color:#78350f;color:#fbbf24}
+.test-nav{display:flex;align-items:center;gap:7px;margin-left:auto}
+
+/* RESULTS */
+.score-ring{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;flex-direction:column;animation:pop .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
+.res-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
+.res-stat{background:var(--bg2);border-radius:var(--r);padding:12px;text-align:center;border:1px solid var(--border)}
+.res-n{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-1px}
+.res-l{font-size:11px;color:var(--text3);margin-top:2px;font-weight:600}
+.rv-list{text-align:left;max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:7px;margin-top:14px}
+.rv-list::-webkit-scrollbar{width:3px}
+.rv-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.rv-item{border:1.5px solid var(--border);border-radius:var(--r);padding:12px;background:var(--surface)}
+.rv-item.rc{border-color:var(--easy-b)}
+.rv-item.rw{border-color:var(--hard-b)}
+.rv-q{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;line-height:1.5}
+.rv-save{font-size:11px;color:#f59e0b;background:#fffbeb;border:1px solid #fde68a;border-radius:5px;padding:3px 8px;cursor:pointer;font-weight:700;margin-left:auto}
+
+/* FOLDERS */
+.page-wrap{min-height:calc(100vh - 60px);padding:36px 20px;max-width:1100px;margin:0 auto}
+.page-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px}
+.page-hdr-title{font-size:24px;font-weight:800;color:var(--text);letter-spacing:-.5px}
+.page-hdr-sub{font-size:13px;color:var(--text2);margin-top:3px}
+.folders-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.folder-card{border:2px solid var(--border);border-radius:var(--r-lg);padding:18px;background:var(--surface);cursor:pointer;transition:all .18s;position:relative}
+.folder-card:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:var(--shadow)}
+.folder-card-add{border-style:dashed;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;min-height:100px;color:var(--text3)}
+.folder-card-add:hover{border-color:var(--brand);color:var(--brand)}
+.folder-del{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:5px;border:none;background:transparent;cursor:pointer;font-size:12px;color:var(--text3);display:none;align-items:center;justify-content:center}
+.folder-card:hover .folder-del{display:flex}
+.folder-del:hover{background:var(--hard-bg);color:var(--hard)}
+.fq-item{border:1px solid var(--border);border-radius:var(--r);padding:12px;background:var(--surface);display:flex;gap:10px;align-items:flex-start;margin-bottom:7px}
+.fq-del{font-size:12px;color:var(--text3);background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:3px 8px;cursor:pointer;flex-shrink:0}
+.fq-del:hover{background:var(--hard-bg);color:var(--hard)}
+.fpick-row{border:2px solid var(--border);border-radius:var(--r);padding:11px 14px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:9px;background:var(--surface);margin-bottom:7px}
+.fpick-row:hover{border-color:var(--brand);background:var(--brand-bg)}
+
+/* PROGRESS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.stat-tile{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;text-align:center}
+.stat-n{font-size:24px;font-weight:800;color:var(--text);letter-spacing:-1px}
+.stat-l{font-size:11px;color:var(--text3);margin-top:3px;font-weight:600}
+.prog-table{width:100%;border-collapse:collapse;font-size:13px}
+.prog-table th{font-size:11px;font-weight:700;color:var(--text3);text-align:left;padding:8px 10px;border-bottom:2px solid var(--border)}
+.prog-table td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text)}
+.prog-table tr:last-child td{border-bottom:none}
+.acc-bar{height:5px;border-radius:3px;background:var(--border);overflow:hidden;margin-top:3px;width:70px}
+.acc-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#2563eb,#7c3aed)}
+
+/* FOLDER MODAL */
+.modal-sm{max-width:400px}
+
+/* TOAST */
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(8px);background:#1e293b;color:#f8fafc;font-size:13px;padding:10px 18px;border-radius:var(--r);z-index:999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow-lg)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0}
+[data-theme="dark"] .toast{background:#f1f5f9;color:#1e293b}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px;text-align:center}
+.footer-logo{font-size:18px;font-weight:800;color:var(--text);margin-bottom:5px}
+.footer-logo span{color:var(--brand)}
+.footer-sub{font-size:12px;color:var(--text3)}
+
+/* LOADING */
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--brand);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:600px){
+  .exam-grid,.feat-grid,.res-grid,.stats-row{grid-template-columns:1fr}
+  #level-cards{grid-template-columns:1fr!important}
+  .hero h1{font-size:30px}
+  .diff-grid{grid-template-columns:1fr 1fr}
+  .subj-grid{grid-template-columns:1fr}
+}
+@media print{
+  nav,footer,#page-qbank,#page-folders,#page-progress,#page-level,#level-test-overlay,.modal-wrap,.toast,#no-q-banner{display:none!important}
+  .print-area{display:block!important}
+}
+.print-area{display:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="nav-logo" onclick="showPage('landing')">Exam<span>Delta</span></div>
+    <div class="nav-links">
+      <span class="nav-lnk active" id="nav-home" onclick="showPage('landing')">Home</span>
+      <span class="nav-lnk" id="nav-qbank" onclick="showPage('qbank')">📖 Question Bank</span>
+      <span class="nav-lnk" id="nav-folders" onclick="showPage('folders')">📁 Folders</span>
+      <span class="nav-lnk" id="nav-progress" onclick="showPage('progress')">📊 Progress</span>
+    </div>
+    <button class="dark-btn" id="dark-btn" onclick="toggleDark()">🌙</button>
+    <button class="btn-start" onclick="openPractice('NEET')">Start Prep</button>
+  </div>
+</nav>
+
+<!-- LANDING -->
+<div id="page-landing">
+  <div class="hero">
+    <div class="eyebrow"><div class="eyebrow-dot"></div>NEET & JEE Exam Preparation</div>
+    <h1>Master Every Concept.<br><span class="grad">Crack Every Exam.</span></h1>
+    <p class="hero-sub">Chapter-wise timed tests, PYQ archive, smart folders and progress tracking.</p>
+    <div class="hero-btns">
+      <button class="hero-btn-p" onclick="document.getElementById('exams-sec').scrollIntoView({behavior:'smooth'})">Start Practicing Free →</button>
+      <button class="hero-btn-s" onclick="showPage('progress')">My Progress</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hs-n" id="hs-q">—</div><div class="hs-l">Questions</div></div>
+      <div><div class="hs-n" id="hs-ch">—</div><div class="hs-l">Chapters</div></div>
+      <div><div class="hs-n">2</div><div class="hs-l">Exams</div></div>
+      <div><div class="hs-n">100%</div><div class="hs-l">NCERT Aligned</div></div>
+    </div>
+  </div>
+
+  <!-- No questions banner (shown when JSON not loaded) -->
+  <div id="no-q-banner" class="no-q-banner hidden">
+    <div class="no-q-icon">⚠️</div>
+    <div>
+      <div class="no-q-title">No questions loaded yet</div>
+      <div class="no-q-steps">
+        <strong>Step 1:</strong> Open <strong>ExamZen-Admin.html</strong> and add questions<br>
+        <strong>Step 2:</strong> Click <strong>Export / Import → Download questions.json</strong><br>
+        <strong>Step 3:</strong> Put <strong>questions.json</strong> in the <strong>same folder</strong> as this file<br>
+        <strong>Step 4:</strong> Reload this page — questions will appear!
+      </div>
+    </div>
+  </div>
+
+  <div id="exams-sec" class="sec">
+    <div class="sec-ctr">
+      <div class="sec-eye">Choose Your Path</div>
+      <div class="sec-ttl">Which exam are you preparing for?</div>
+      <div class="sec-sub">Select your exam to start chapter-wise timed practice</div>
+    </div>
+    <div class="exam-grid" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="exam-card neet">
+        <div class="ec-icon">🏥</div>
+        <div class="ec-title">NEET (Medical)</div>
+        <p class="ec-desc">Biology, Physics, Chemistry. Chapter-wise practice with PYQ archive.</p>
+        <div class="ec-pills"><span class="ec-pill">Biology</span><span class="ec-pill">Physics</span><span class="ec-pill">Chemistry</span><span class="ec-pill" id="neet-q-count">— Qs</span></div>
+        <button class="ec-btn" onclick="openPractice('NEET')">Start NEET Prep →</button>
+      </div>
+      <div class="exam-card jee">
+        <div class="ec-icon">⚙️</div>
+        <div class="ec-title">JEE (Engineering)</div>
+        <p class="ec-desc">Mains & Advanced. Physics, Chemistry and Mathematics practice.</p>
+        <div class="ec-pills"><span class="ec-pill">Mathematics</span><span class="ec-pill">Physics</span><span class="ec-pill">Chemistry</span><span class="ec-pill" id="jee-q-count">— Qs</span></div>
+        <button class="ec-btn" onclick="openPractice('JEE')">Start JEE Prep →</button>
+      </div>
+      <div class="exam-card" style="border-top:4px solid transparent;border-image:linear-gradient(90deg,#f59e0b,#ef4444) 1;background:var(--surface)" onclick="openLevel()">
+        <div class="ec-icon" style="background:linear-gradient(135deg,#fef3c7,#fee2e2)">🏆</div>
+        <div class="ec-title">Level Mode</div>
+        <p class="ec-desc">Challenge yourself through 6 progressive levels — unlock harder levels by scoring higher.</p>
+        <div class="ec-pills" style="justify-content:center">
+          <span class="ec-pill" style="background:#fef3c7;color:#92400e">6 Levels</span>
+          <span class="ec-pill" style="background:#fee2e2;color:#991b1b">NEET & JEE</span>
+        </div>
+        <button class="ec-btn" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">Start Level Mode →</button>
+      </div>
+    </div>
+  </div>
+  <div class="feat-bg">
+    <div class="sec">
+      <div class="sec-ctr"><div class="sec-eye">Features</div><div class="sec-ttl">Everything you need</div></div>
+      <div class="feat-grid">
+        <div class="feat-card"><div class="feat-ico">⏱️</div><div class="feat-ttl">Timed Tests</div><div class="feat-desc">Real countdown timer just like exam day. Build speed and accuracy.</div></div>
+        <div class="feat-card"><div class="feat-ico">🖼️</div><div class="feat-ttl">Image Support</div><div class="feat-desc">Questions with diagrams — critical for Physics, Biology and Chemistry.</div></div>
+        <div class="feat-card"><div class="feat-ico">📚</div><div class="feat-ttl">PYQ Archive</div><div class="feat-desc">Previous Year Questions tagged by year and difficulty.</div></div>
+        <div class="feat-card"><div class="feat-ico">📁</div><div class="feat-ttl">Smart Folders</div><div class="feat-desc">Save tricky questions to folders. Review and print anytime.</div></div>
+        <div class="feat-card"><div class="feat-ico">📊</div><div class="feat-ttl">Progress Tracking</div><div class="feat-desc">Chapter-wise accuracy and stats stored in your browser.</div></div>
+        <div class="feat-card"><div class="feat-ico">🌙</div><div class="feat-ttl">Dark Mode</div><div class="feat-desc">Easy on the eyes for long study sessions at night.</div></div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-logo">Exam<span>Delta</span></div><div class="footer-sub">Powered by ExamDelta</div></footer>
+</div>
+
+<!-- FOLDERS PAGE -->
+<div id="page-folders" class="hidden">
+  <div class="page-wrap">
+    <div class="page-hdr">
+      <div><div class="page-hdr-title">📁 My Folders</div><div class="page-hdr-sub">Save questions you want to revisit</div></div>
+      <button class="btn-p" onclick="showCreateFolder()">+ New Folder</button>
+    </div>
+    <div id="create-folder-form" class="hidden" style="background:var(--surface);border:1.5px solid var(--brand-border);border-radius:var(--r-lg);padding:16px;margin-bottom:18px;display:flex;gap:10px;align-items:flex-end">
+      <div style="flex:1"><label style="font-size:12px;font-weight:700;color:var(--text2);display:block;margin-bottom:4px">Folder name</label><input class="form-input" id="new-folder-name" placeholder="e.g. Weak Areas, Physics Doubts..." onkeydown="if(event.key==='Enter')createFolder()" style="width:100%"></div>
+      <button class="btn-p" onclick="createFolder()">Create</button>
+      <button class="btn-s" onclick="document.getElementById('create-folder-form').classList.add('hidden')">Cancel</button>
+    </div>
+    <div id="folders-grid-view"><div id="folders-grid" class="folders-grid"></div></div>
+    <div id="folder-detail-view" class="hidden">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap">
+        <button class="btn-s" onclick="showFoldersList()">← Back</button>
+        <div style="font-size:18px;font-weight:800;color:var(--text)" id="folder-detail-name"></div>
+        <span class="badge b-gray" id="folder-detail-count"></span>
+        <button class="btn-s" style="margin-left:auto" onclick="printFolder()">🖨️ Print</button>
+      </div>
+      <div id="folder-qs"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS PAGE -->
+<div id="page-progress" class="hidden">
+  <div class="page-wrap">
+    <div class="page-hdr"><div><div class="page-hdr-title">📊 My Progress</div><div class="page-hdr-sub">Performance across all chapters</div></div></div>
+    <div class="stats-row" id="prog-stats"></div>
+    <div id="prog-content"></div>
+  </div>
+</div>
+
+
+<!-- QUESTION BANK PAGE -->
+<div id="page-qbank" class="hidden">
+  <div class="page-wrap">
+    <div class="page-hdr">
+      <div><div class="page-hdr-title">📖 Question Bank</div><div class="page-hdr-sub">Browse all questions by subject — includes PYQ archive</div></div>
+    </div>
+    <!-- Filter bar -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center">
+      <select class="form-select" id="qb-exam" onchange="renderQBank()" style="min-width:120px">
+        <option value="">All Exams</option>
+        <option value="NEET">NEET</option>
+        <option value="JEE">JEE</option>
+      </select>
+      <select class="form-select" id="qb-subj" onchange="renderQBank()" style="min-width:140px">
+        <option value="">All Subjects</option>
+        <option>Physics</option><option>Chemistry</option><option>Biology</option><option>Mathematics</option>
+      </select>
+      <select class="form-select" id="qb-diff" onchange="renderQBank()" style="min-width:140px">
+        <option value="">All Difficulties</option>
+        <option>Easy</option><option>Moderate</option><option>Hard</option>
+      </select>
+      <select class="form-select" id="qb-pyq" onchange="renderQBank()" style="min-width:130px">
+        <option value="">All Types</option>
+        <option value="yes">PYQ Only</option>
+        <option value="no">Non-PYQ Only</option>
+      </select>
+      <input class="form-input" id="qb-search" placeholder="🔍 Search questions..." oninput="renderQBank()" style="flex:1;min-width:180px">
+      <span id="qb-count" style="font-size:13px;color:var(--text3);font-weight:600;white-space:nowrap"></span>
+    </div>
+    <!-- Subject accordion panels -->
+    <div id="qbank-content"></div>
+  </div>
+</div>
+
+
+<!-- LEVEL PAGE -->
+<div id="page-level" class="hidden">
+  <div class="page-wrap" style="max-width:900px">
+    <div class="page-hdr">
+      <div><div class="page-hdr-title">🏆 Level Mode</div><div class="page-hdr-sub">Progress through 6 levels — unlock each by scoring the required marks</div></div>
+      <button class="btn-s" onclick="showPage('landing')">← Back</button>
+    </div>
+    <!-- Exam switcher -->
+    <div style="display:flex;gap:10px;margin-bottom:24px">
+      <button id="lv-neet-btn" onclick="setLevelExam('NEET')" style="flex:1;padding:12px;border-radius:var(--r-lg);border:2px solid var(--neet);background:var(--neet-bg);color:var(--neet-dark);font-size:14px;font-weight:700;cursor:pointer;transition:all .15s">🏥 NEET</button>
+      <button id="lv-jee-btn" onclick="setLevelExam('JEE')" style="flex:1;padding:12px;border-radius:var(--r-lg);border:2px solid var(--border);background:var(--surface);color:var(--text2);font-size:14px;font-weight:700;cursor:pointer;transition:all .15s">⚙️ JEE</button>
+    </div>
+    <!-- Level cards grid -->
+    <div id="level-cards" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px"></div>
+  </div>
+</div>
+
+<!-- LEVEL TEST MODAL (full screen overlay) -->
+<div id="level-test-overlay" class="hidden" style="position:fixed;inset:0;z-index:300;background:var(--bg);overflow-y:auto">
+  <div style="max-width:800px;margin:0 auto;padding:16px">
+    <div id="level-test-content"></div>
+  </div>
+</div>
+
+<!-- REPORT MODAL -->
+<div id="modal-report" style="position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.65);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:12px">
+  <div class="modal-box" style="max-width:440px">
+    <div class="modal-hdr">
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:18px">🚩</span><span class="modal-ttl">Report Question</span></div>
+      <button class="modal-close" onclick="closeReportModal()">×</button>
+    </div>
+    <div style="padding:18px 20px">
+      <div style="font-size:13px;color:var(--text2);margin-bottom:12px;background:var(--bg2);padding:10px;border-radius:var(--r-sm);line-height:1.5;font-weight:500" id="report-q-preview"></div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">What is wrong with this question?</div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px" id="report-reasons">
+        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);transition:all .15s" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="report-reason" value="wrong_answer" style="width:15px;height:15px"> <span style="font-size:13px;color:var(--text)">Wrong correct answer marked</span></label>
+        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);transition:all .15s" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="report-reason" value="typo" style="width:15px;height:15px"> <span style="font-size:13px;color:var(--text)">Typo or spelling mistake in question</span></label>
+        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);transition:all .15s" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="report-reason" value="wrong_option" style="width:15px;height:15px"> <span style="font-size:13px;color:var(--text)">One or more options are wrong/missing</span></label>
+        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);transition:all .15s" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="report-reason" value="unclear" style="width:15px;height:15px"> <span style="font-size:13px;color:var(--text)">Question is unclear or incomplete</span></label>
+        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);transition:all .15s" onmouseover="this.style.borderColor='var(--brand)'" onmouseout="this.style.borderColor='var(--border)'"><input type="radio" name="report-reason" value="other" style="width:15px;height:15px"> <span style="font-size:13px;color:var(--text)">Other issue</span></label>
+      </div>
+      <div class="form-group" style="margin-bottom:14px">
+        <label style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:5px;display:block">Additional details (optional)</label>
+        <textarea class="form-input" id="report-details" rows="2" placeholder="Describe the issue..."></textarea>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn-p" onclick="submitReport()" style="flex:1;justify-content:center">🚩 Submit Report</button>
+        <button class="btn-s" onclick="closeReportModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRACTICE MODAL -->
+<div class="modal-wrap" id="modal-practice">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <div style="display:flex;align-items:center;gap:8px"><span class="badge" id="mp-badge">NEET</span><span class="modal-ttl" id="mp-title">Choose a subject</span></div>
+      <button class="modal-close" onclick="closePractice()">×</button>
+    </div>
+    <div id="mp-body"></div>
+    <div class="modal-ftr hidden" id="mp-ftr">
+      <span style="font-size:13px;color:var(--text2)" id="mp-sel-info">No topics selected</span>
+      <div style="display:flex;gap:8px"><button class="btn-s" id="mp-back">← Back</button><button class="btn-p" id="mp-next" disabled>Start Test →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOLDER MODAL -->
+<div class="modal-wrap" id="modal-folder">
+  <div class="modal-box modal-sm">
+    <div class="modal-hdr"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:16px">📁</span><span class="modal-ttl">Save to Folder</span></div><button class="modal-close" onclick="closeFolderModal()">×</button></div>
+    <div style="padding:16px 18px">
+      <div style="font-size:12px;color:var(--text2);margin-bottom:10px;background:var(--bg2);padding:9px;border-radius:var(--r-sm);line-height:1.5" id="fp-q-prev"></div>
+      <div id="fp-list" style="max-height:220px;overflow-y:auto;margin-bottom:10px"></div>
+      <div style="display:flex;gap:8px;border-top:1px solid var(--border);padding-top:10px">
+        <input class="form-input" id="fp-new-name" placeholder="Create new folder..." onkeydown="if(event.key==='Enter')fpCreate()" style="flex:1">
+        <button class="btn-p" onclick="fpCreate()">+ Create & Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><div class="toast-dot"></div><span id="toast-msg"></span></div>
+<div class="print-area" id="print-area"></div>
+
+<script>
+
+// ╔══════════════════════════════════════════════════════╗
+// ║  SUPABASE CONFIGURATION                              ║
+// ║  Paste your keys here after following the guide      ║
+// ╚══════════════════════════════════════════════════════╝
+const SUPABASE_URL = "https://uuctlmrakgvgjbabhuku.supabase.co";         // e.g. https://xxx.supabase.co
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1Y3RsbXJha2d2Z2piYWJodWt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MzA4OTUsImV4cCI6MjA5MTQwNjg5NX0.Vj8rdWeFRLRvRPv720VCS3-VW9RrLgwDlf9fpf8nPpA"; // from Supabase Settings → API
+
+// ── Supabase client (loads from CDN) ──
+let supabase = null;
+async function initSupabase(){
+  if(SUPABASE_URL === "YOUR_SUPABASE_URL") return false; // not configured yet
+  try{
+    const {createClient} = await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm");
+    supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    return true;
+  }catch(e){console.error("Supabase init error:",e);return false;}
+}
+
+// ══════════════ STATE ══════════════
+let QUESTIONS = [];
+let S = {exam:null,subj:null,diff:null,mode:null,step:'subj',exp:{},chk:{ch:{},tp:{}},allSel:false,pyq:false};
+let TEST = {qs:[],cur:0,ans:{},marked:{},start:null,limit:1800,timer:null};
+let FPICK = {q:null};
+let DB = {progress:{},folders:[],testHistory:[]};
+
+const SUBJS_MAP = {
+  NEET:[{id:'Physics',n:'Physics',ico:'⚡',bg:'#e0f2fe',c:'#0369a1'},{id:'Chemistry',n:'Chemistry',ico:'🧪',bg:'#dcfce7',c:'#15803d'},{id:'Biology',n:'Biology',ico:'🧬',bg:'#fee2e2',c:'#b91c1c'},{id:'All',n:'All Subjects',ico:'📚',bg:'#e0e7ff',c:'#3730a3'}],
+  JEE:[{id:'Physics',n:'Physics',ico:'⚡',bg:'#e0f2fe',c:'#0369a1'},{id:'Chemistry',n:'Chemistry',ico:'🧪',bg:'#dcfce7',c:'#15803d'},{id:'Mathematics',n:'Mathematics',ico:'∑',bg:'#ede9fe',c:'#7c3aed'},{id:'All',n:'All Subjects',ico:'📚',bg:'#e0e7ff',c:'#3730a3'}]
+};
+
+// ══════════════ INIT ══════════════
+(function(){
+  const th=localStorage.getItem('ez-theme')||'light';
+  document.getElementById('html-root').setAttribute('data-theme',th);
+  document.getElementById('dark-btn').textContent=th==='dark'?'☀️':'🌙';
+  try{const d=localStorage.getItem('ez-student-db');if(d){const p=JSON.parse(d);if(p.progress)DB.progress=p.progress;if(p.folders)DB.folders=p.folders;if(p.testHistory)DB.testHistory=p.testHistory;}}catch(e){}
+  loadQuestionsJSON();
+})();
+
+function saveDB(){try{localStorage.setItem('ez-student-db',JSON.stringify(DB));}catch(e){}}
+function toast(msg,ok=true){const t=document.getElementById('toast');document.getElementById('toast-msg').textContent=msg;t.querySelector('.toast-dot').style.background=ok?'#22c55e':'#ef4444';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+function toggleDark(){const r=document.getElementById('html-root');const n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);document.getElementById('dark-btn').textContent=n==='dark'?'☀️':'🌙';localStorage.setItem('ez-theme',n);}
+
+// ══════════════ LOAD QUESTIONS (Supabase or JSON fallback) ══════════════
+async function loadQuestionsJSON(){
+  // First try Supabase
+  const sbReady = await initSupabase();
+  if(sbReady && supabase){
+    try{
+      const {data, error} = await supabase.from('mcqs').select('*').order('created_at',{ascending:false});
+      if(error) throw error;
+      if(data && data.length > 0){
+        // Map Supabase column names to app format
+        QUESTIONS = data.map(r=>({
+          id: r.id,
+          exam: r.exam,
+          subject: r.subject,
+          chapter: r.chapter,
+          questionText: r.question_text,
+          options: [r.option_a, r.option_b, r.option_c, r.option_d],
+          correctAnswer: r.correct_answer,
+          difficulty: r.difficulty||'Easy',
+          topic: r.topic||'',
+          isPYQ: r.is_pyq||false,
+          pyqYear: r.pyq_year||'',
+          imageUrl: r.image_url||''
+        }));
+        document.getElementById('no-q-banner').classList.add('hidden');
+        updateStats();
+        return;
+      }
+    }catch(e){
+      console.warn("Supabase fetch failed, trying JSON fallback:", e);
+    }
+  }
+  // Fallback: try questions.json
+  try {
+    const res = await fetch('./questions.json?v='+Date.now());
+    if(!res.ok) throw new Error('Not found');
+    const data = await res.json();
+    if(Array.isArray(data)){
+      QUESTIONS = data;
+      updateStats();
+      return;
+    }
+  } catch(e) {}
+  // Neither worked — show setup banner
+  document.getElementById('no-q-banner').classList.remove('hidden');
+  updateStats();
+}
+
+function updateStats(){
+  const total=QUESTIONS.length;
+  const neet=QUESTIONS.filter(q=>q.exam==='NEET').length;
+  const jee=QUESTIONS.filter(q=>q.exam==='JEE').length;
+  const chapters=new Set(QUESTIONS.map(q=>q.chapter)).size;
+  document.getElementById('hs-q').textContent=total||'0';
+  document.getElementById('hs-ch').textContent=chapters||'0';
+  document.getElementById('neet-q-count').textContent=neet+' Qs';
+  document.getElementById('jee-q-count').textContent=jee+' Qs';
+}
+
+function getAdminChapters(){
+  // Load chapters defined in admin panel (even empty ones)
+  try{ return JSON.parse(localStorage.getItem('ez-admin-chapters')||'{}'); }catch(e){ return {}; }
+}
+
+function buildChapters(exam,subj){
+  // Start with admin-defined chapters (includes empty ones)
+  const adminChs = getAdminChapters();
+  const subjList = subj && subj!=='All' ? [subj] : ['Physics','Chemistry','Biology','Mathematics'];
+  const map = {};
+
+  subjList.forEach(sv=>{
+    const key = exam+':'+sv;
+    if(adminChs[key]){
+      adminChs[key].forEach(ch=>{
+        if(!map[ch.name]) map[ch.name] = {name:ch.name, topics:new Set(), subject:sv};
+        ch.topics.forEach(t=>map[ch.name].topics.add(t.name));
+      });
+    }
+  });
+
+  // Add chapters from actual questions (fills in any not in admin)
+  let qs=QUESTIONS.filter(q=>q.exam===exam);
+  if(subj&&subj!=='All') qs=qs.filter(q=>q.subject===subj);
+  qs.forEach(q=>{
+    const ch=q.chapter||'General';
+    if(!map[ch]) map[ch]={name:ch,topics:new Set(),subject:q.subject};
+    if(q.topic) map[ch].topics.add(q.topic);
+  });
+
+  return Object.values(map).map(c=>({name:c.name,topics:[...c.topics].map((t,i)=>({id:'t'+i,name:t}))}));
+}
+
+// ══════════════ PAGE NAV ══════════════
+function showPage(p){
+  ['landing','qbank','folders','progress','level'].forEach(x=>{document.getElementById('page-'+x).classList.add('hidden');document.getElementById('nav-'+(x==='landing'?'home':x))?.classList.remove('active');});
+  document.getElementById('page-'+p).classList.remove('hidden');
+  document.getElementById('nav-'+(p==='landing'?'home':p))?.classList.add('active');
+  if(p==='folders')renderFolders();
+  if(p==='progress')renderProgress();
+  if(p==='qbank')renderQBank();
+  if(p==='level'){renderLevelCards();}
+  window.scrollTo(0,0);
+}
+
+
+// ══ DIVERSIFIED QUESTION SELECTION ══
+// Spreads questions across chapters proportionally (like real NEET/JEE)
+function diversifyQuestions(pool, targetCount){
+  if(!pool.length) return [];
+  if(pool.length <= targetCount) return pool.sort(()=>Math.random()-.5);
+
+  // Group by chapter
+  const byChapter = {};
+  pool.forEach(q=>{
+    const k = q.chapter||'General';
+    if(!byChapter[k]) byChapter[k]=[];
+    byChapter[k].push(q);
+  });
+
+  const chapters = Object.keys(byChapter);
+  const numChapters = chapters.length;
+  const result = [];
+
+  if(numChapters === 0) return pool.sort(()=>Math.random()-.5).slice(0,targetCount);
+
+  // Proportional allocation: each chapter gets floor(targetCount / numChapters)
+  // Remaining slots filled from chapters with most questions
+  const basePerChapter = Math.floor(targetCount / numChapters);
+  const remainder = targetCount - basePerChapter * numChapters;
+
+  // Sort chapters by question count (more questions = more allocation for remainder)
+  chapters.sort((a,b)=>byChapter[b].length - byChapter[a].length);
+
+  chapters.forEach((ch, idx)=>{
+    // Shuffle this chapter's questions
+    const shuffled = byChapter[ch].sort(()=>Math.random()-.5);
+    const take = basePerChapter + (idx < remainder ? 1 : 0);
+    result.push(...shuffled.slice(0, Math.min(shuffled.length, take)));
+  });
+
+  // If we got fewer than target (because some chapters had too few questions),
+  // fill remaining slots from chapters that have leftover questions
+  if(result.length < targetCount){
+    const used = new Set(result.map(q=>q.id||q.questionText));
+    const leftover = pool.filter(q=>!used.has(q.id||q.questionText)).sort(()=>Math.random()-.5);
+    result.push(...leftover.slice(0, targetCount - result.length));
+  }
+
+  return result.slice(0, targetCount);
+}
+
+// NEET/JEE subject defaults for practice mode
+const SUBJECT_DEFAULTS = {
+  NEET:{
+    Biology:{defaultQ:90,defaultMin:90},
+    Physics:{defaultQ:45,defaultMin:45},
+    Chemistry:{defaultQ:45,defaultMin:45},
+    All:{defaultQ:180,defaultMin:180}
+  },
+  JEE:{
+    Physics:{defaultQ:25,defaultMin:30},
+    Chemistry:{defaultQ:25,defaultMin:30},
+    Mathematics:{defaultQ:25,defaultMin:30},
+    All:{defaultQ:75,defaultMin:90}
+  }
+};
+
+// ══════════════ PRACTICE FLOW ══════════════
+function openPractice(exam){
+  S={exam,subj:null,diff:null,mode:null,step:'subj',exp:{},chk:{ch:{},tp:{}},allSel:false,pyq:false};
+  document.getElementById('modal-practice').classList.add('open');
+  document.body.style.overflow='hidden';
+  const b=document.getElementById('mp-badge');b.textContent=exam;b.className='badge '+(exam==='NEET'?'b-neet':'b-jee');
+  renderStep('subj');
+}
+function closePractice(){if(TEST.timer)clearInterval(TEST.timer);document.getElementById('modal-practice').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('modal-practice').addEventListener('click',e=>{if(e.target===e.currentTarget)closePractice();});
+
+function sBar(cur){const si=['subj','diff','mode','config','chapters'];const idx=si.indexOf(cur);
+  return `<div class="step-row">${si.map((s,i)=>`<div class="step-it">${i>0?`<div class="step-ln ${i<=idx?'done':''}"></div>`:''}<div class="step-c ${i<idx?'done':i===idx?'active':'pend'}">${i<idx?'✓':i+1}</div></div>`).join('')}</div>`;}
+
+function renderStep(step){
+  S.step=step;
+  const body=document.getElementById('mp-body');const ftr=document.getElementById('mp-ftr');const title=document.getElementById('mp-title');
+  if(step==='subj'){
+    title.textContent=S.exam+' — Choose a subject';ftr.classList.add('hidden');
+    body.innerHTML=`<div style="padding:20px">${sBar('subj')}<div class="subj-grid">${SUBJS_MAP[S.exam].map(s=>`
+      <div class="subj-card" onclick="pSubj('${s.id}')">
+        <div class="subj-ico" style="background:${s.bg};color:${s.c}">${s.ico}</div>
+        <div><div class="subj-nm">${s.n}</div><div class="subj-cnt">${QUESTIONS.filter(q=>q.exam===S.exam&&(s.id==='All'||q.subject===s.id)).length} questions</div></div>
+        <div style="margin-left:auto;font-size:14px;color:var(--text3)">›</div>
+      </div>`).join('')}</div></div>`;
+  } else if(step==='diff'){
+    title.textContent='Choose difficulty';ftr.classList.add('hidden');
+    const qs=QUESTIONS.filter(q=>q.exam===S.exam&&(S.subj==='All'||q.subject===S.subj));
+    body.innerHTML=`<div style="padding:20px">${sBar('diff')}
+      <div style="margin-bottom:14px"><label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:var(--text2)"><input type="checkbox" id="pyq-cb" ${S.pyq?'checked':''} onchange="S.pyq=this.checked" style="width:15px;height:15px"> PYQ questions only</label></div>
+      <div class="diff-grid">
+        <div class="diff-card easy" onclick="pDiff('Easy')"><div style="font-size:24px">🌱</div><div class="diff-nm">Easy</div><div class="diff-cnt">${qs.filter(q=>q.difficulty==='Easy').length} Qs</div></div>
+        <div class="diff-card mod" onclick="pDiff('Moderate')"><div style="font-size:24px">📘</div><div class="diff-nm">Moderate</div><div class="diff-cnt">${qs.filter(q=>q.difficulty==='Moderate').length} Qs</div></div>
+        <div class="diff-card hard" onclick="pDiff('Hard')"><div style="font-size:24px">🔥</div><div class="diff-nm">Hard</div><div class="diff-cnt">${qs.filter(q=>q.difficulty==='Hard').length} Qs</div></div>
+        <div class="diff-card all" onclick="pDiff(null)"><div style="font-size:24px">🎲</div><div class="diff-nm">Random</div><div class="diff-cnt">${qs.length} Qs</div></div>
+      </div>
+      <div style="margin-top:12px"><button class="btn-s" onclick="renderStep('subj')">← Back</button></div></div>`;
+  } else if(step==='mode'){
+    title.textContent='Practice mode';ftr.classList.add('hidden');
+    body.innerHTML=`<div style="padding:20px">${sBar('mode')}<div style="display:flex;flex-direction:column;gap:9px">
+      <div style="border:2px solid var(--border);border-radius:var(--r-lg);padding:16px;cursor:pointer;background:var(--surface);display:flex;align-items:center;gap:12px;transition:all .18s" onmouseenter="this.style.borderColor='var(--brand)';this.style.background='var(--brand-bg)'" onmouseleave="this.style.borderColor='var(--border)';this.style.background='var(--surface)'" onclick="pMode('all')">
+        <div style="width:40px;height:40px;background:var(--brand-bg);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📖</div>
+        <div><div style="font-size:13px;font-weight:700;color:var(--text)">All chapters</div><div style="font-size:12px;color:var(--text3);margin-top:2px">Complete syllabus — default time & questions</div></div>
+        <div style="margin-left:auto;font-size:16px;color:var(--text3)">›</div>
+      </div>
+      <div style="border:2px solid var(--border);border-radius:var(--r-lg);padding:16px;cursor:pointer;background:var(--surface);display:flex;align-items:center;gap:12px;transition:all .18s" onmouseenter="this.style.borderColor='var(--brand)';this.style.background='var(--brand-bg)'" onmouseleave="this.style.borderColor='var(--border)';this.style.background='var(--surface)'" onclick="pMode('custom')">
+        <div style="width:40px;height:40px;background:var(--brand-bg);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🎯</div>
+        <div><div style="font-size:13px;font-weight:700;color:var(--text)">Choose chapters & topics</div><div style="font-size:12px;color:var(--text3);margin-top:2px">Target your weak areas</div></div>
+        <div style="margin-left:auto;font-size:16px;color:var(--text3)">›</div>
+      </div>
+    </div><div style="margin-top:10px"><button class="btn-s" onclick="renderStep('diff')">← Back</button></div></div>`;
+  } else if(step==='config'){
+    // ── Configure Q count + time limit ──
+    title.textContent='Configure your test';ftr.classList.add('hidden');
+    const subj = S.subj||'All';
+    const exam = S.exam;
+    const defs = (SUBJECT_DEFAULTS[exam]||{})[subj] || {defaultQ:50,defaultMin:60};
+    const available = QUESTIONS.filter(q=>q.exam===exam&&(subj==='All'||q.subject===subj)&&(!S.diff||q.difficulty===S.diff)).length;
+    const suggestedQ = Math.min(defs.defaultQ, available||defs.defaultQ);
+    const suggestedMin = defs.defaultMin;
+    S._configQ = suggestedQ;
+    S._configMin = suggestedMin;
+    body.innerHTML=`<div style="padding:20px">
+      <div style="background:var(--bg2);border:1.5px solid var(--brand-border);border-radius:var(--r-lg);padding:18px;margin-bottom:16px">
+        <div style="font-size:13px;font-weight:700;color:var(--brand);margin-bottom:14px">📋 ${exam} ${subj} — Default settings</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <label style="font-size:12px;font-weight:700;color:var(--text2);display:block;margin-bottom:5px">Number of Questions</label>
+            <div style="display:flex;align-items:center;gap:8px">
+              <input type="number" id="cfg-q" value="${suggestedQ}" min="1" max="${available||500}" style="font-size:16px;font-weight:700;width:80px;border:2px solid var(--brand-border);border-radius:var(--r-sm);padding:8px;background:var(--surface);color:var(--text);text-align:center;outline:none">
+              <div style="font-size:12px;color:var(--text3)">(${available} available)</div>
+            </div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px">Default: ${defs.defaultQ} for ${exam} ${subj}</div>
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:700;color:var(--text2);display:block;margin-bottom:5px">Time Limit (minutes)</label>
+            <div style="display:flex;align-items:center;gap:8px">
+              <input type="number" id="cfg-t" value="${suggestedMin}" min="1" max="360" style="font-size:16px;font-weight:700;width:80px;border:2px solid var(--brand-border);border-radius:var(--r-sm);padding:8px;background:var(--surface);color:var(--text);text-align:center;outline:none">
+              <div style="font-size:12px;color:var(--text3)">minutes</div>
+            </div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px">Default: ${defs.defaultMin} min for ${exam} ${subj}</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding:10px 14px;background:var(--surface);border-radius:var(--r-sm);font-size:13px;color:var(--text2);display:flex;gap:16px;flex-wrap:wrap">
+          <span>⏱️ <strong id="cfg-preview-time">${suggestedMin} min</strong></span>
+          <span>❓ <strong id="cfg-preview-q">${suggestedQ} questions</strong></span>
+          <span>⚡ <strong id="cfg-preview-per">${Math.round(suggestedMin*60/suggestedQ)}s</strong> per question</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn-s" onclick="renderStep('mode')">← Back</button>
+        <button class="btn-s" onclick="resetConfigDefaults()">↺ Defaults</button>
+        <button class="btn-p" style="flex:1;justify-content:center" onclick="startWithConfig()">▶ Start Test →</button>
+      </div>
+    </div>`;
+    // Live preview update
+    const updatePreview = ()=>{
+      const q=parseInt(document.getElementById('cfg-q')?.value)||suggestedQ;
+      const t=parseInt(document.getElementById('cfg-t')?.value)||suggestedMin;
+      const pq=document.getElementById('cfg-preview-q');
+      const pt=document.getElementById('cfg-preview-time');
+      const pp=document.getElementById('cfg-preview-per');
+      if(pq)pq.textContent=q+' questions';
+      if(pt)pt.textContent=t+' min';
+      if(pp)pp.textContent=Math.round(t*60/Math.max(q,1))+'s';
+      S._configQ=q;S._configMin=t;
+    };
+    setTimeout(()=>{
+      document.getElementById('cfg-q')?.addEventListener('input',updatePreview);
+      document.getElementById('cfg-t')?.addEventListener('input',updatePreview);
+    },50);
+  } else if(step==='chapters'){
+    title.textContent='Select chapters';ftr.classList.remove('hidden');
+    document.getElementById('mp-back').onclick=()=>renderStep('mode');
+    document.getElementById('mp-next').onclick=()=>collectAndStart();
+    document.getElementById('mp-next').disabled=true;
+    buildChapterUI(body);
+  }
+}
+
+function pSubj(id){S.subj=id;renderStep('diff');}
+function pDiff(d){S.diff=d;renderStep('mode');}
+function pMode(m){S.mode=m;if(m==='all')renderStep('config');else renderStep('chapters');}
+
+function buildChapterUI(body){
+  const chs=buildChapters(S.exam,S.subj==='All'?null:S.subj);
+  S.exp={};S.chk={ch:{},tp:{}};S.allSel=false;updateMpSel();
+  const html=chs.length?chs.map((ch,ci)=>`
+    <div class="ch-item" id="chi-${ci}">
+      <div class="ch-head" onclick="tExp(${ci})">
+        <div class="ch-chk" id="cchk-${ci}" onclick="event.stopPropagation();tChk(${ci})"></div>
+        <div class="ch-num">${ci+1}</div>
+        <span class="ch-nm">${ch.name}</span>
+        <span class="ch-cnt">${QUESTIONS.filter(q=>q.chapter===ch.name&&q.exam===S.exam).length} Qs</span>
+        <div class="ch-arr" id="charr-${ci}">›</div>
+      </div>
+      <div class="tp-area hidden" id="ctp-${ci}">
+        ${ch.topics.map((t,ti)=>`<div class="tp-row" onclick="tTp(${ci},${ti})"><div class="t-chk" id="tchk-${ci}-${ti}"></div><span class="t-nm">${t.name}</span></div>`).join('')}
+        ${!ch.topics.length?`<div style="font-size:12px;color:var(--text3);padding:2px 0">No topic tags for this chapter</div>`:''}
+      </div>
+    </div>`).join('')
+  :`<div style="text-align:center;padding:24px;color:var(--text3)"><div style="font-size:28px;margin-bottom:8px">📭</div><div>No questions for this subject yet.</div></div>`;
+  body.innerHTML=`<div style="padding:20px">${sBar('chapters')}
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
+      <div style="font-size:13px;font-weight:700;color:var(--text)">${chs.length} chapters</div>
+      <button style="font-size:12px;color:var(--brand);background:var(--brand-bg);border:1px solid var(--brand-border);border-radius:var(--r-sm);padding:4px 10px;cursor:pointer;font-weight:700" id="sal-btn" onclick="tSelAll()">Select all</button>
+    </div>
+    <div class="ch-list">${html}</div></div>`;
+}
+
+function tExp(ci){S.exp[ci]=!S.exp[ci];document.getElementById('ctp-'+ci).classList.toggle('hidden',!S.exp[ci]);document.getElementById('charr-'+ci).classList.toggle('open',S.exp[ci]);}
+function tChk(ci){
+  const chs=buildChapters(S.exam,S.subj==='All'?null:S.subj);const ch=chs[ci];if(!ch)return;
+  S.chk.ch[ci]=!S.chk.ch[ci];const on=S.chk.ch[ci];
+  document.getElementById('cchk-'+ci).classList.toggle('on',on);document.getElementById('chi-'+ci).classList.toggle('sel',on);
+  ch.topics.forEach((_,ti)=>{S.chk.tp[ci+'-'+ti]=on;document.getElementById('tchk-'+ci+'-'+ti)?.classList.toggle('on',on);});
+  updateMpSel();
+}
+function tTp(ci,ti){
+  const k=ci+'-'+ti;S.chk.tp[k]=!S.chk.tp[k];document.getElementById('tchk-'+ci+'-'+ti).classList.toggle('on',S.chk.tp[k]);
+  const chs=buildChapters(S.exam,S.subj==='All'?null:S.subj);const ch=chs[ci];
+  if(ch){const all=ch.topics.every((_,ti2)=>S.chk.tp[ci+'-'+ti2]);S.chk.ch[ci]=all;document.getElementById('cchk-'+ci)?.classList.toggle('on',all);}
+  updateMpSel();
+}
+function updateMpSel(){
+  const t=Object.values(S.chk.tp).filter(Boolean).length;const c=Object.values(S.chk.ch).filter(Boolean).length;
+  document.getElementById('mp-sel-info').textContent=t>0?`${c} chapter(s), ${t} topic(s) selected`:'No topics selected';
+  document.getElementById('mp-next').disabled=t===0;
+}
+function tSelAll(){
+  S.allSel=!S.allSel;const chs=buildChapters(S.exam,S.subj==='All'?null:S.subj);
+  chs.forEach((ch,ci)=>{S.chk.ch[ci]=S.allSel;document.getElementById('cchk-'+ci)?.classList.toggle('on',S.allSel);document.getElementById('chi-'+ci)?.classList.toggle('sel',S.allSel);ch.topics.forEach((_,ti)=>{S.chk.tp[ci+'-'+ti]=S.allSel;document.getElementById('tchk-'+ci+'-'+ti)?.classList.toggle('on',S.allSel);});});
+  document.getElementById('sal-btn').textContent=S.allSel?'Deselect all':'Select all';
+  updateMpSel();
+}
+
+// ══════════════ TEST ENGINE ══════════════
+
+function resetConfigDefaults(){
+  const subj=S.subj||'All';const exam=S.exam;
+  const defs=(SUBJECT_DEFAULTS[exam]||{})[subj]||{defaultQ:50,defaultMin:60};
+  const el_q=document.getElementById('cfg-q');const el_t=document.getElementById('cfg-t');
+  if(el_q){el_q.value=defs.defaultQ;el_q.dispatchEvent(new Event('input'));}
+  if(el_t){el_t.value=defs.defaultMin;el_t.dispatchEvent(new Event('input'));}
+}
+
+function startWithConfig(){
+  const q=parseInt(document.getElementById('cfg-q')?.value)||50;
+  const t=parseInt(document.getElementById('cfg-t')?.value)||60;
+  S._configQ=q; S._configMin=t;
+  collectAndStart();
+}
+
+function collectAndStart(){
+  let pool=[...QUESTIONS].filter(q=>q.exam===S.exam);
+  if(S.subj&&S.subj!=='All') pool=pool.filter(q=>q.subject===S.subj);
+  if(S.diff) pool=pool.filter(q=>q.difficulty===S.diff);
+  if(S.pyq) pool=pool.filter(q=>q.isPYQ);
+  if(S.mode==='custom'){
+    const chs=buildChapters(S.exam,S.subj==='All'?null:S.subj);
+    const selC=chs.filter((_,ci)=>S.chk.ch[ci]).map(c=>c.name);
+    const selT=[];chs.forEach((ch,ci)=>ch.topics.forEach((t,ti)=>{if(S.chk.tp[ci+'-'+ti])selT.push(t.name);}));
+    pool=pool.filter(q=>selC.includes(q.chapter)||(q.topic&&selT.includes(q.topic)));
+  }
+  if(!pool.length){
+    document.getElementById('mp-body').innerHTML=`<div style="padding:28px;text-align:center;color:var(--text2)"><div style="font-size:36px;margin-bottom:10px">📭</div><div style="font-size:14px;font-weight:600">No questions match your selection.</div><div style="font-size:12px;color:var(--text3);margin-top:5px">Try All Difficulties, or the admin needs to add questions for this subject.</div><br><button class="btn-s" onclick="renderStep('subj')">← Change Selection</button></div>`;
+    document.getElementById('mp-ftr').classList.add('hidden');return;
+  }
+  // Get target count — from config step or default
+  const target = S._configQ || Math.min(pool.length, 50);
+  const timeSec = (S._configMin || Math.ceil(target*1.5)) * 60;
+  // Diversify across chapters
+  const qs = diversifyQuestions(pool, target);
+  startTest(qs, timeSec);
+}
+
+function startTest(qs, timeSec){
+  if(TEST.timer)clearInterval(TEST.timer);
+  const limit = timeSec || qs.length*90;
+  TEST={qs,cur:0,ans:{},marked:{},start:Date.now(),limit,timer:null};
+  document.getElementById('mp-ftr').classList.add('hidden');
+  document.getElementById('mp-title').textContent='Test in Progress';
+  renderQ();
+  TEST.timer=setInterval(()=>{
+    const rem=Math.max(0,TEST.limit-Math.floor((Date.now()-TEST.start)/1000));
+    if(!rem){clearInterval(TEST.timer);submitTest();}
+    const el=document.getElementById('t-timer');
+    if(el){el.textContent=`⏱ ${Math.floor(rem/60)}:${String(rem%60).padStart(2,'0')}`;el.classList.toggle('warn',rem<=300);}
+  },1000);
+}
+
+function renderQ(){
+  const q=TEST.qs[TEST.cur];const n=TEST.qs.length;
+  const rem=Math.max(0,TEST.limit-Math.floor((Date.now()-TEST.start)/1000));
+  const saved=TEST.marked[TEST.cur];
+  document.getElementById('mp-body').innerHTML=`
+    <div class="test-hdr">
+      <span style="font-size:12px;font-weight:700;color:var(--text2)">Q${TEST.cur+1}/${n}</span>
+      <span class="badge ${q.exam==='NEET'?'b-neet':'b-jee'}">${q.exam}</span>
+      ${q.isPYQ?`<span class="badge b-pyq">PYQ ${q.pyqYear||''}</span>`:''}
+      <span class="badge ${q.difficulty==='Easy'?'b-easy':q.difficulty==='Hard'?'b-hard':'b-mod'}">${q.difficulty}</span>
+      <div class="test-timer ${rem<=300?'warn':''}" id="t-timer">⏱ ${Math.floor(rem/60)}:${String(rem%60).padStart(2,'0')}</div>
+    </div>
+    <div class="q-palette">${TEST.qs.map((_,i)=>`<div class="q-dot ${TEST.ans[i]!==undefined?'answered':''} ${TEST.marked[i]?'saved':''} ${i===TEST.cur?'current':''}" onclick="goQ(${i})">${i+1}</div>`).join('')}</div>
+    <div class="test-body">
+      <div style="font-size:11px;color:var(--text3);margin-bottom:5px">${q.chapter||''}${q.topic?' • '+q.topic:''}</div>
+      ${q.imageUrl?`<img src="${q.imageUrl}" class="q-img" onerror="this.style.display='none'" alt="Question diagram">`:''}
+      <div class="q-text">${q.questionText}</div>
+      <div class="opts-list">${(q.options||[]).map((o,i)=>`<div class="opt-row ${TEST.ans[TEST.cur]===i?'sel':''}" onclick="selOpt(${i})"><div class="opt-letter">${['A','B','C','D'][i]}</div><div class="opt-text">${o}</div></div>`).join('')}</div>
+      <div class="test-actions">
+        <button class="bm-btn ${saved?'saved':''}" onclick="bmQ()">📁 ${saved?'Saved':'Save to Folder'}</button>
+        ${TEST.reported&&TEST.reported[TEST.cur]?`<button style="font-size:12px;font-weight:600;color:#15803d;background:#f0fdf4;border:1.5px solid #86efac;border-radius:var(--r-sm);padding:7px 12px;cursor:default;display:flex;align-items:center;gap:5px">✓ Reported</button>`:`<button style="font-size:12px;font-weight:600;color:#dc2626;background:#fef2f2;border:1.5px solid #fca5a5;border-radius:var(--r-sm);padding:7px 12px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .15s" onmouseover="this.style.background='#fee2e2'" onmouseout="this.style.background='#fef2f2'" onclick="openReportModal(${TEST.cur})">🚩 Report</button>`}
+        <div class="test-nav">
+          ${TEST.cur>0?`<button class="btn-s" onclick="goQ(${TEST.cur-1})">← Prev</button>`:''}
+          ${TEST.cur<n-1?`<button class="btn-p" onclick="goQ(${TEST.cur+1})">Next →</button>`:''}
+          <button class="btn-submit" onclick="submitTest()">Submit ✓</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function selOpt(i){
+  if(TEST.ans[TEST.cur]===i){
+    delete TEST.ans[TEST.cur]; // unselect
+  } else {
+    TEST.ans[TEST.cur]=i;
+  }
+  renderQ();
+}
+function goQ(i){TEST.cur=i;renderQ();}
+function bmQ(){if(TEST.marked[TEST.cur]){TEST.marked[TEST.cur]=false;renderQ();}else{FPICK.q={...TEST.qs[TEST.cur],_qi:TEST.cur};openFolderModal();}}
+
+function submitTest(){
+  if(TEST.timer)clearInterval(TEST.timer);
+  const el=Math.floor((Date.now()-TEST.start)/1000);
+  let c=0,w=0,sk=0;
+  TEST.qs.forEach((q,i)=>{
+    const a=TEST.ans[i];
+    if(a===undefined)sk++;else if(a===q.correctAnswer)c++;else w++;
+    const pk=q.exam+':'+q.subject+':'+q.chapter;
+    if(!DB.progress[pk])DB.progress[pk]={correct:0,wrong:0,skip:0,attempts:0,chapName:q.chapter||'',subj:q.subject||'',exam:q.exam||''};
+    DB.progress[pk].attempts++;
+    if(a===undefined)DB.progress[pk].skip++;else if(a===q.correctAnswer)DB.progress[pk].correct++;else DB.progress[pk].wrong++;
+  });
+  // Save to test history
+  const testRecord = {
+    id:'t_'+Date.now(),
+    date:new Date().toISOString(),
+    exam:TEST.qs[0]?.exam||'',
+    subject:S.subj||TEST.qs[0]?.subject||'',
+    totalQ:TEST.qs.length,
+    correct:c, wrong:w, skip:sk,
+    timeSec:el,
+    pct:TEST.qs.length?Math.round(c/TEST.qs.length*100):0,
+    mode: S.mode||'all',
+    diff: S.diff||'All',
+    // Save questions + answers snapshot for review
+    questions: TEST.qs.map((q,i)=>({
+      questionText: q.questionText,
+      options: q.options,
+      correctAnswer: q.correctAnswer,
+      userAnswer: TEST.ans[i],
+      difficulty: q.difficulty,
+      chapter: q.chapter,
+      subject: q.subject,
+      topic: q.topic||'',
+      isPYQ: q.isPYQ,
+      pyqYear: q.pyqYear||'',
+      imageUrl: q.imageUrl||''
+    }))
+  };
+  if(!DB.testHistory) DB.testHistory=[];
+  DB.testHistory.push(testRecord);
+  if(DB.testHistory.length>50) DB.testHistory=DB.testHistory.slice(-50); // keep last 50
+  saveDB();
+  const pct=TEST.qs.length?Math.round(c/TEST.qs.length*100):0;
+  const mins=Math.floor(el/60);const secs=el%60;
+  let grade='🎉 Excellent!';if(pct<40)grade='📚 Keep Practicing!';else if(pct<60)grade='💪 Good Effort!';else if(pct<80)grade='⭐ Well Done!';
+  const rvHTML=TEST.qs.map((q,i)=>{
+    const a=TEST.ans[i];const isC=a===q.correctAnswer;const isS=a===undefined;
+    return `<div class="rv-item ${isS?'':isC?'rc':'rw'}">
+      ${q.imageUrl?`<img src="${q.imageUrl}" style="max-width:100px;border-radius:5px;margin-bottom:6px;border:1px solid var(--border);display:block" onerror="this.style.display='none'">`:''}
+      <div class="rv-q">${i+1}. ${q.questionText}</div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;font-size:12px;font-weight:600;margin-bottom:4px">
+        <span style="color:${isS?'var(--text3)':isC?'var(--easy)':'var(--hard)'}">${isS?'⊘ Skipped':isC?'✓ Correct':'✗ '+(q.options||[])[a]}</span>
+        ${!isC&&!isS?`<span style="color:var(--easy)">✓ Answer: ${(q.options||[])[q.correctAnswer]}</span>`:''}
+      </div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
+        <span class="badge ${q.difficulty==='Easy'?'b-easy':q.difficulty==='Hard'?'b-hard':'b-mod'}">${q.difficulty}</span>
+        ${q.isPYQ?`<span class="badge b-pyq">PYQ ${q.pyqYear||''}</span>`:''}
+        <button class="rv-save" onclick="FPICK.q={...TEST.qs[${i}]};openFolderModal()">📁 Save</button>
+      </div>
+    </div>`;}).join('');
+  document.getElementById('mp-ftr').classList.add('hidden');
+  document.getElementById('mp-title').textContent='Test Results';
+  document.getElementById('mp-body').innerHTML=`<div style="padding:24px;text-align:center">
+    <div class="score-ring"><div style="font-size:28px;font-weight:800;color:#fff;line-height:1">${pct}%</div><div style="font-size:12px;color:rgba(255,255,255,.8);font-weight:600">${c}/${TEST.qs.length}</div></div>
+    <div style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:5px">${grade}</div>
+    <div class="res-grid">
+      <div class="res-stat"><div class="res-n" style="color:var(--easy)">${c}</div><div class="res-l">Correct</div></div>
+      <div class="res-stat"><div class="res-n" style="color:var(--hard)">${w}</div><div class="res-l">Wrong</div></div>
+      <div class="res-stat"><div class="res-n" style="color:var(--text3)">${sk}</div><div class="res-l">Skipped</div></div>
+      <div class="res-stat"><div class="res-n">${mins}:${String(secs).padStart(2,'0')}</div><div class="res-l">Time</div></div>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px">
+      <button class="btn-s" onclick="openPractice('${TEST.qs[0]?.exam||'NEET'}')">↻ New Test</button>
+      <button class="btn-s" onclick="printResults()">🖨️ Print</button>
+      <button class="btn-s" onclick="closePractice()">✕ Close</button>
+    </div>
+    <div style="text-align:left;font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Review answers:</div>
+    <div class="rv-list">${rvHTML}</div>
+  </div>`;
+}
+
+// ══════════════ FOLDER SYSTEM ══════════════
+function openFolderModal(){
+  const q=FPICK.q;if(!q)return;
+  document.getElementById('fp-q-prev').textContent=(q.questionText||'').substring(0,80)+'...';
+  document.getElementById('fp-list').innerHTML=DB.folders.length?DB.folders.map((f,i)=>`
+    <div class="fpick-row ${f.questions.some(x=>x.id===q.id)?'sel':''}" onclick="saveFol(${i})">
+      <span style="font-size:16px">📁</span>
+      <span style="font-size:13px;font-weight:700;color:var(--text)">${f.name}</span>
+      <span class="badge b-gray" style="margin-left:auto">${f.questions.length}</span>
+      ${f.questions.some(x=>x.id===q.id)?'<span style="color:var(--brand);font-weight:700;font-size:11px">✓ Saved</span>':''}
+    </div>`).join(''):'<div style="color:var(--text3);font-size:13px;padding:10px;text-align:center">No folders yet. Create one below.</div>';
+  document.getElementById('fp-new-name').value='';
+  document.getElementById('modal-folder').classList.add('open');
+}
+function closeFolderModal(){document.getElementById('modal-folder').classList.remove('open');}
+document.getElementById('modal-folder').addEventListener('click',e=>{if(e.target===e.currentTarget)closeFolderModal();});
+function saveFol(fi){
+  const q=FPICK.q;if(!q)return;
+  if(DB.folders[fi].questions.some(x=>x.id===q.id)){toast('Already saved!');return;}
+  DB.folders[fi].questions.push({id:q.id,questionText:q.questionText,options:q.options,correctAnswer:q.correctAnswer,difficulty:q.difficulty,isPYQ:q.isPYQ,pyqYear:q.pyqYear,chapter:q.chapter,subject:q.subject,imageUrl:q.imageUrl||''});
+  saveDB();toast('✓ Saved to "'+DB.folders[fi].name+'"');closeFolderModal();
+  if(FPICK.q?._qi!==undefined){TEST.marked[FPICK.q._qi]=true;renderQ();}
+}
+function fpCreate(){
+  const name=document.getElementById('fp-new-name').value.trim();if(!name){toast('Enter folder name',false);return;}
+  DB.folders.push({id:'f_'+Date.now(),name,questions:[]});saveDB();saveFol(DB.folders.length-1);
+}
+function renderFolders(){
+  document.getElementById('folders-grid').innerHTML=`
+    <div class="folder-card folder-card-add" onclick="showCreateFolder()"><span style="font-size:28px">+</span><span style="font-size:13px;font-weight:600">New Folder</span></div>
+    ${DB.folders.map((f,i)=>`<div class="folder-card" onclick="openFolderDet(${i})"><button class="folder-del" onclick="event.stopPropagation();delFolder(${i})">🗑️</button><div style="font-size:26px;margin-bottom:7px">📁</div><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px">${f.name}</div><div style="font-size:12px;color:var(--text3)">${f.questions.length} questions</div></div>`).join('')}`;
+}
+function showCreateFolder(){document.getElementById('create-folder-form').classList.remove('hidden');document.getElementById('new-folder-name').focus();}
+function createFolder(){const n=document.getElementById('new-folder-name').value.trim();if(!n)return;DB.folders.push({id:'f_'+Date.now(),name:n,questions:[]});saveDB();document.getElementById('new-folder-name').value='';document.getElementById('create-folder-form').classList.add('hidden');renderFolders();toast('✓ Folder created');}
+function delFolder(i){if(!confirm('Delete folder?'))return;DB.folders.splice(i,1);saveDB();renderFolders();}
+function openFolderDet(i){
+  const f=DB.folders[i];
+  document.getElementById('folders-grid-view').classList.add('hidden');
+  document.getElementById('folder-detail-view').classList.remove('hidden');
+  document.getElementById('folder-detail-name').textContent='📁 '+f.name;
+  document.getElementById('folder-detail-count').textContent=f.questions.length+' questions';
+  document.getElementById('folder-qs').innerHTML=f.questions.length?f.questions.map((q,qi)=>`
+    <div class="fq-item">
+      <div style="flex:1">
+        ${q.imageUrl?`<img src="${q.imageUrl}" style="max-width:100px;border-radius:6px;border:1px solid var(--border);margin-bottom:7px;display:block" onerror="this.style.display='none'">`:''}
+        <div style="font-size:13px;font-weight:500;color:var(--text);line-height:1.5">${qi+1}. ${q.questionText}</div>
+        <div style="display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;align-items:center">
+          <span class="badge ${q.difficulty==='Easy'?'b-easy':q.difficulty==='Hard'?'b-hard':'b-mod'}">${q.difficulty}</span>
+          ${q.isPYQ?`<span class="badge b-pyq">PYQ ${q.pyqYear||''}</span>`:''}
+          <span style="font-size:12px;color:var(--easy);font-weight:700">✓ ${q.options[q.correctAnswer]}</span>
+        </div>
+      </div>
+      <button class="fq-del" onclick="remFromFolder(${i},${qi})">Remove</button>
+    </div>`).join(''):'<div style="color:var(--text3);padding:20px;text-align:center">Empty folder.</div>';
+}
+function showFoldersList(){document.getElementById('folders-grid-view').classList.remove('hidden');document.getElementById('folder-detail-view').classList.add('hidden');renderFolders();}
+function remFromFolder(fi,qi){DB.folders[fi].questions.splice(qi,1);saveDB();openFolderDet(fi);}
+
+// ══════════════ PROGRESS ══════════════
+function renderProgress(){
+  const ent=Object.entries(DB.progress);
+  const hist=DB.testHistory||[];
+  let total=0,correct=0,wrong=0;
+  ent.forEach(([,v])=>{total+=v.attempts;correct+=v.correct;wrong+=v.wrong;});
+  const pct=total?Math.round(correct/total*100):0;
+  const totalTests=hist.length;
+  const bestPct=hist.length?Math.max(...hist.map(h=>h.pct)):0;
+
+  document.getElementById('prog-stats').innerHTML=`
+    <div class="stat-tile"><div class="stat-n">${totalTests}</div><div class="stat-l">Tests Taken</div></div>
+    <div class="stat-tile"><div class="stat-n" style="color:var(--easy)">${correct}</div><div class="stat-l">Total Correct</div></div>
+    <div class="stat-tile"><div class="stat-n" style="color:var(--hard)">${wrong}</div><div class="stat-l">Total Wrong</div></div>
+    <div class="stat-tile"><div class="stat-n" style="color:var(--brand)">${pct}%</div><div class="stat-l">Overall Accuracy</div></div>`;
+
+  // ── Test History Timeline ──
+  const progEl = document.getElementById('prog-content');
+  if(!progEl) return;
+
+  let histHTML = '';
+  if(hist.length){
+    // Mini sparkline bar chart of last 20 tests
+    const recent = hist.slice(-20);
+    const maxPct = Math.max(...recent.map(h=>h.pct),1);
+    histHTML += `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;margin-bottom:16px">
+      <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px">📈 Score Trend (last ${recent.length} tests)</div>
+      <div style="font-size:12px;color:var(--text3);margin-bottom:16px">Your accuracy per test over time</div>
+      <div style="display:flex;align-items:flex-end;gap:5px;height:80px;padding:0 4px">
+        ${recent.map((h,i)=>{
+          const barH=Math.max(6,Math.round(h.pct/maxPct*72));
+          const clr=h.pct>=70?'var(--easy)':h.pct>=45?'var(--mod)':'var(--hard)';
+          const dt=new Date(h.date).toLocaleDateString('en-IN',{day:'2-digit',month:'short'});
+          return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;position:relative" title="Test ${i+1}: ${h.pct}% on ${dt}">
+            <div style="font-size:9px;color:var(--text3);font-weight:600">${h.pct}%</div>
+            <div style="width:100%;height:${barH}px;background:${clr};border-radius:4px 4px 0 0;min-height:6px;transition:all .2s" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'"></div>
+          </div>`;}).join('')}
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-top:6px;border-top:1px solid var(--border);margin-top:4px">
+        <span style="font-size:11px;color:var(--text3)">Test 1</span>
+        <div style="display:flex;gap:12px">
+          <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:var(--easy);border-radius:2px;display:inline-block"></span>≥70%</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:var(--mod);border-radius:2px;display:inline-block"></span>45–69%</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:var(--hard);border-radius:2px;display:inline-block"></span>&lt;45%</span>
+        </div>
+        <span style="font-size:11px;color:var(--text3)">Latest</span>
+      </div>
+    </div>`;
+
+    // Test history list
+    histHTML += `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div>
+          <div style="font-size:15px;font-weight:700;color:var(--text)">🧪 All Tests</div>
+          <div style="font-size:12px;color:var(--text3);margin-top:2px">Click any test to review all questions</div>
+        </div>
+        <button style="font-size:12px;color:var(--hard);background:var(--hard-bg);border:1px solid var(--hard-b);border-radius:var(--r-sm);padding:4px 10px;cursor:pointer" onclick="if(confirm('Clear test history?')){DB.testHistory=[];saveDB();renderProgress()}">Clear History</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        ${[...hist].reverse().map((h,ri)=>{
+          const i=hist.length-ri;
+          const dt=new Date(h.date).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'2-digit',hour:'2-digit',minute:'2-digit'});
+          const mins=Math.floor(h.timeSec/60);const secs=h.timeSec%60;
+          const clr=h.pct>=70?'var(--easy)':h.pct>=45?'var(--mod)':'var(--hard)';
+          const bgClr=h.pct>=70?'var(--easy-bg)':h.pct>=45?'var(--mod-bg)':'var(--hard-bg)';
+          const hasReview=h.questions&&h.questions.length>0;
+          const realIdx=hist.length-ri-1;
+          return `<div>
+            <div style="border:1.5px solid var(--border);border-radius:var(--r);padding:12px 14px;background:var(--surface);display:flex;align-items:center;gap:12px;flex-wrap:wrap;transition:all .18s;cursor:${hasReview?'pointer':'default'}"
+              onmouseover="this.style.borderColor='var(--brand)';this.style.background='var(--brand-bg)'"
+              onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'"
+              onclick="toggleTestReview(${realIdx})">
+              <div style="width:48px;height:48px;border-radius:10px;background:${bgClr};display:flex;align-items:center;justify-content:center;flex-direction:column;flex-shrink:0;border:1.5px solid ${clr}">
+                <div style="font-size:15px;font-weight:800;color:${clr};line-height:1">${h.pct}%</div>
+                <div style="font-size:9px;color:${clr};font-weight:600">score</div>
+              </div>
+              <div style="flex:1;min-width:100px">
+                <div style="font-size:13px;font-weight:700;color:var(--text)">Test #${i}</div>
+                <div style="font-size:11px;color:var(--text3);margin-top:1px">${dt}</div>
+              </div>
+              <div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
+                <span class="badge ${h.exam==='NEET'?'b-neet':'b-jee'}">${h.exam}</span>
+                ${h.subject?`<span class="badge b-gray">${h.subject}</span>`:''}
+                ${h.diff&&h.diff!=='All'?`<span class="badge ${h.diff==='Easy'?'b-easy':h.diff==='Hard'?'b-hard':'b-mod'}">${h.diff}</span>`:''}
+              </div>
+              <div style="text-align:right;flex-shrink:0">
+                <div style="display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-bottom:2px">
+                  <span style="font-size:12px;font-weight:700;color:var(--easy)">✓ ${h.correct}</span>
+                  <span style="font-size:12px;font-weight:700;color:var(--hard)">✗ ${h.wrong}</span>
+                  <span style="font-size:12px;color:var(--text3)">⊘ ${h.skip}</span>
+                </div>
+                <div style="font-size:11px;color:var(--text3)">${h.totalQ} Qs · ${mins}:${String(secs).padStart(2,'0')}</div>
+              </div>
+              ${hasReview?`<div style="font-size:13px;color:var(--brand);flex-shrink:0" id="tr-arrow-${realIdx}">▼</div>`:''}
+            </div>
+            <!-- Expandable question review -->
+            <div id="tr-review-${realIdx}" class="hidden" style="border:1.5px solid var(--brand-border);border-top:none;border-radius:0 0 var(--r) var(--r);background:var(--bg2);padding:12px 14px">
+              ${hasReview?`
+              <!-- Topic summary -->
+              <div style="margin-bottom:12px">
+                <div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:7px">Topic Performance:</div>
+                <div style="display:flex;flex-wrap:wrap;gap:6px" id="tr-topics-${realIdx}"></div>
+              </div>
+              <!-- Question list -->
+              <div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:7px">All Questions:</div>
+              <div style="display:flex;flex-direction:column;gap:7px" id="tr-qs-${realIdx}"></div>`:''}
+            </div>
+          </div>`;}).join('')}
+      </div>
+    </div>`;
+  } else {
+    histHTML = `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;text-align:center;margin-bottom:16px">
+      <div style="font-size:36px;margin-bottom:10px">🎯</div>
+      <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">No tests taken yet</div>
+      <div style="font-size:13px;color:var(--text2)">Start practicing to see your progress here!</div>
+    </div>`;
+  }
+
+  // Chapter performance table
+  let tableHTML = '';
+  if(ent.length){
+    tableHTML = `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px">
+      <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:14px">📋 Chapter-wise performance</div>
+      <div style="overflow-x:auto"><table class="prog-table"><thead><tr><th>Chapter</th><th>Subject</th><th>Exam</th><th>Attempted</th><th>Correct</th><th>Accuracy</th></tr></thead><tbody>
+        ${ent.sort((a,b)=>b[1].attempts-a[1].attempts).map(([,v])=>{
+          const acc=v.correct+v.wrong?Math.round(v.correct/(v.correct+v.wrong)*100):0;
+          return `<tr><td>${v.chapName||'—'}</td><td><span class="badge b-gray">${v.subj||'—'}</span></td><td><span class="badge b-gray">${v.exam||'—'}</span></td><td>${v.attempts}</td><td style="color:var(--easy);font-weight:700">${v.correct}</td><td><div style="font-size:12px;font-weight:700;color:${acc>=60?'var(--easy)':acc>=40?'var(--mod)':'var(--hard)'}">${acc}%</div><div class="acc-bar" style="margin-top:2px"><div class="acc-fill" style="width:${acc}%"></div></div></td></tr>`;
+        }).join('')}
+      </tbody></table></div>
+    </div>`;
+  }
+
+  progEl.innerHTML = histHTML + tableHTML;
+}
+
+// ══════════════ QUESTION BANK ══════════════
+let QBANK_QS = []; // stores current filtered questions for safe Save-to-Folder reference
+
+function saveToFolderFromBank(idx){
+  const q = QBANK_QS[idx];
+  if(!q) return;
+  FPICK.q = {...q};
+  openFolderModal();
+}
+
+function renderQBank(){
+  const exam = document.getElementById('qb-exam')?.value||'';
+  const subj = document.getElementById('qb-subj')?.value||'';
+  const diff = document.getElementById('qb-diff')?.value||'';
+  const pyq  = document.getElementById('qb-pyq')?.value||'';
+  const srch = (document.getElementById('qb-search')?.value||'').toLowerCase();
+
+  let qs = [...QUESTIONS];
+  if(exam) qs=qs.filter(q=>q.exam===exam);
+  if(subj) qs=qs.filter(q=>q.subject===subj);
+  if(diff) qs=qs.filter(q=>q.difficulty===diff);
+  if(pyq==='yes') qs=qs.filter(q=>q.isPYQ);
+  if(pyq==='no')  qs=qs.filter(q=>!q.isPYQ);
+  if(srch) qs=qs.filter(q=>(q.questionText||'').toLowerCase().includes(srch)||(q.chapter||'').toLowerCase().includes(srch)||(q.topic||'').toLowerCase().includes(srch));
+
+  QBANK_QS = qs; // store for safe folder save reference
+  document.getElementById('qb-count').textContent=qs.length+' question'+(qs.length!==1?'s':'');
+
+  const el=document.getElementById('qbank-content');
+  if(!qs.length){
+    el.innerHTML=`<div style="text-align:center;padding:40px;color:var(--text3)"><div style="font-size:40px;margin-bottom:12px">📭</div><div style="font-size:14px;font-weight:600">No questions match your filter.</div></div>`;
+    return;
+  }
+
+  // Group by exam → subject → chapter
+  const groups={};
+  // First seed from admin-defined chapters (even empty ones)
+  const adminChs = getAdminChapters();
+  const examFilter = document.getElementById('qb-exam')?.value||'';
+  const subjFilter = document.getElementById('qb-subj')?.value||'';
+  const examsToShow = examFilter ? [examFilter] : ['NEET','JEE'];
+  const subjsToShow = subjFilter ? [subjFilter] : ['Physics','Chemistry','Biology','Mathematics'];
+  examsToShow.forEach(ex=>{
+    subjsToShow.forEach(sv=>{
+      const key=ex+':'+sv;
+      if(adminChs[key] && adminChs[key].length>0){
+        if(!groups[ex]) groups[ex]={};
+        if(!groups[ex][sv]) groups[ex][sv]={};
+        adminChs[key].forEach(ch=>{
+          if(!groups[ex][sv][ch.name]) groups[ex][sv][ch.name]=[];
+        });
+      }
+    });
+  });
+  // Then fill in actual questions
+  qs.forEach(q=>{
+    const examKey=q.exam||'Unknown';
+    const subjKey=q.subject||'Unknown';
+    const chapKey=q.chapter||'General';
+    if(!groups[examKey]) groups[examKey]={};
+    if(!groups[examKey][subjKey]) groups[examKey][subjKey]={};
+    if(!groups[examKey][subjKey][chapKey]) groups[examKey][subjKey][chapKey]=[];
+    groups[examKey][subjKey][chapKey].push(q);
+  });
+  // Remove entirely empty exams/subjects (no admin chapters AND no questions)
+  Object.keys(groups).forEach(ex=>{
+    Object.keys(groups[ex]).forEach(sv=>{
+      if(Object.keys(groups[ex][sv]).length===0) delete groups[ex][sv];
+    });
+    if(Object.keys(groups[ex]).length===0) delete groups[ex];
+  });
+
+  const subjectColors={Physics:'#0369a1',Chemistry:'#15803d',Biology:'#b91c1c',Mathematics:'#7c3aed'};
+  const subjectIcons={Physics:'⚡',Chemistry:'🧪',Biology:'🧬',Mathematics:'∑'};
+
+  let html='';
+  Object.entries(groups).forEach(([exam,subjects])=>{
+    html+=`<div style="margin-bottom:28px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <span class="badge ${exam==='NEET'?'b-neet':'b-jee'}" style="font-size:13px;padding:5px 14px">${exam}</span>
+        <div style="height:1px;flex:1;background:var(--border)"></div>
+        <span style="font-size:12px;color:var(--text3)">${Object.values(subjects).reduce((a,b)=>a+Object.values(b).reduce((x,y)=>x+y.length,0),0)} questions</span>
+      </div>`;
+    Object.entries(subjects).forEach(([sname,chapters])=>{
+      const subjTotal=Object.values(chapters).reduce((a,b)=>a+b.length,0);
+      const scolor=subjectColors[sname]||'var(--brand)';
+      const sicon=subjectIcons[sname]||'📖';
+      const uid='qbs-'+exam+'-'+sname.replace(/\s/g,'');
+      html+=`<div style="border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:12px;background:var(--surface)">
+        <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;background:var(--bg2)" onclick="qbToggle('${uid}')">
+          <div style="width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--surface);border:1px solid var(--border);flex-shrink:0">${sicon}</div>
+          <div style="flex:1">
+            <div style="font-size:15px;font-weight:700;color:${scolor}">${sname}</div>
+            <div style="font-size:12px;color:var(--text3);margin-top:1px">${Object.keys(chapters).length} chapter${Object.keys(chapters).length!==1?'s':''} · ${subjTotal} question${subjTotal!==1?'s':''}</div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            ${qs.filter(q=>q.exam===exam&&q.subject===sname&&q.isPYQ).length?`<span class="badge b-pyq">${qs.filter(q=>q.exam===exam&&q.subject===sname&&q.isPYQ).length} PYQ</span>`:''}
+          </div>
+          <div style="font-size:10px;color:var(--text3);background:var(--bg3);padding:3px 8px;border-radius:4px;flex-shrink:0" id="${uid}-arrow">▼</div>
+        </div>
+        <div id="${uid}" class="hidden">`;
+
+      Object.entries(chapters).forEach(([chapName,qlist])=>{
+        const cuid='qbc-'+uid+'-'+chapName.replace(/\s/g,'_').replace(/[^a-zA-Z0-9_]/g,'');
+        html+=`<div style="border-top:1px solid var(--border)">
+          <div style="display:flex;align-items:center;gap:10px;padding:11px 18px;cursor:pointer;background:var(--surface)" onclick="qbToggle('${cuid}')">
+            <div style="font-size:13px;font-weight:600;color:var(--text);flex:1">📂 ${chapName}</div>
+            <span class="badge b-gray">${qlist.length} Qs</span>
+            ${qlist.filter(q=>q.isPYQ).length?`<span class="badge b-pyq">${qlist.filter(q=>q.isPYQ).length} PYQ</span>`:''}
+            <div style="font-size:10px;color:var(--text3)" id="${cuid}-arrow">▼</div>
+          </div>
+          <div id="${cuid}" class="hidden" style="background:var(--bg2);border-top:1px solid var(--border)">`;
+
+        if(qlist.length===0){
+          html+=`<div id="${cuid}" class="hidden" style="background:var(--bg2);border-top:1px solid var(--border)"><div style="padding:14px 18px 14px 28px;font-size:13px;color:var(--text3);font-style:italic">📭 No questions in this chapter yet</div></div>`;
+        }
+        qlist.forEach((q,qi)=>{ const qbGlobalIdx=QBANK_QS.indexOf(q); // safe global index
+          html+=`<div style="padding:12px 18px 12px 28px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start">
+            <div style="width:22px;height:22px;border-radius:5px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--text3);flex-shrink:0;margin-top:1px">${qi+1}</div>
+            <div style="flex:1;min-width:0">
+              ${q.imageUrl?`<img src="${q.imageUrl}" style="max-width:160px;border-radius:6px;border:1px solid var(--border);margin-bottom:8px;display:block" onerror="this.style.display='none'">`:''}
+              <div style="font-size:13px;font-weight:500;color:var(--text);line-height:1.6;margin-bottom:7px">${q.questionText}</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:8px">
+                ${(q.options||[]).map((o,oi)=>`<div style="font-size:12px;padding:5px 9px;border-radius:6px;${oi===q.correctAnswer?'background:var(--easy-bg);border:1px solid var(--easy-b);color:var(--easy);font-weight:700':'background:var(--surface);border:1px solid var(--border);color:var(--text2)'}"><span style="font-weight:800;margin-right:4px">${['A','B','C','D'][oi]}.</span>${o}${oi===q.correctAnswer?' ✓':''}</div>`).join('')}
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+                <span class="badge ${q.difficulty==='Easy'?'b-easy':q.difficulty==='Hard'?'b-hard':'b-mod'}">${q.difficulty}</span>
+                ${q.isPYQ?`<span class="badge b-pyq">PYQ ${q.pyqYear||''}</span>`:''}
+                ${q.topic?`<span class="badge b-gray">${q.topic}</span>`:''}
+                <button class="rv-save" style="margin-left:auto" onclick="saveToFolderFromBank(${qbGlobalIdx})">📁 Save to Folder</button>
+              </div>
+            </div>
+          </div>`;
+        });
+        html+=`</div></div>`;
+      });
+      html+=`</div></div>`;
+    });
+    html+=`</div>`;
+  });
+  el.innerHTML=html;
+}
+
+function qbToggle(id){
+  const el=document.getElementById(id);
+  const arr=document.getElementById(id+'-arrow');
+  if(!el) return;
+  const hidden=el.classList.toggle('hidden');
+  if(arr) arr.textContent=hidden?'▼':'▲';
+}
+
+// ══════════════ LEVEL MODE ══════════════
+let LEVEL_STATE = {exam:'NEET'};
+
+const LEVEL_CONFIG = {
+  NEET: [
+    {level:1,name:'Level 1',difficulty:'Easy',  questions:45, timeMin:60, passMark:500, totalMark:720, desc:'Foundation — Easy questions from all subjects'},
+    {level:2,name:'Level 2',difficulty:'Easy',  questions:45, timeMin:60, passMark:600, totalMark:720, desc:'Solid base — Higher accuracy needed'},
+    {level:3,name:'Level 3',difficulty:'Moderate',questions:90,timeMin:90,passMark:550, totalMark:720, desc:'Exam standard — Moderate difficulty'},
+    {level:4,name:'Level 4',difficulty:'Moderate',questions:90,timeMin:90,passMark:550, totalMark:720, desc:'Near-exam difficulty'},
+    {level:5,name:'Level 5',difficulty:'Hard',  questions:90, timeMin:120,passMark:650, totalMark:720, desc:'Advanced — Hard questions'},
+    {level:6,name:'Level 6',difficulty:'Hard',  questions:180,timeMin:180,passMark:650, totalMark:720, desc:'Full NEET simulation — All subjects'},
+  ],
+  JEE: [
+    {level:1,name:'Level 1',difficulty:'Easy',  questions:25, timeMin:60, passMark:40,  totalMark:100, desc:'Foundation — Easy questions'},
+    {level:2,name:'Level 2',difficulty:'Easy',  questions:25, timeMin:60, passMark:55,  totalMark:100, desc:'Solid base — Higher accuracy needed'},
+    {level:3,name:'Level 3',difficulty:'Moderate',questions:50,timeMin:90,passMark:60,  totalMark:200, desc:'Exam standard — Moderate difficulty'},
+    {level:4,name:'Level 4',difficulty:'Moderate',questions:50,timeMin:90,passMark:65,  totalMark:200, desc:'Near-exam difficulty'},
+    {level:5,name:'Level 5',difficulty:'Hard',  questions:75, timeMin:120,passMark:75,  totalMark:300, desc:'Advanced — Hard questions'},
+    {level:6,name:'Level 6',difficulty:'Hard',  questions:75, timeMin:180,passMark:80,  totalMark:300, desc:'Full JEE simulation'},
+  ]
+};
+
+const LEVEL_COLORS = ['#22c55e','#16a34a','#f59e0b','#ea580c','#ef4444','#b91c1c'];
+const LEVEL_BADGE_BG = ['#f0fdf4','#dcfce7','#fffbeb','#fff7ed','#fef2f2','#fee2e2'];
+const LEVEL_DIFF_LABEL = ['Easy','Easy','Moderate','Moderate','Hard','Hard'];
+const LEVEL_LOCK_ICONS = ['🔓','🔒','🔒','🔒','🔒','🔒'];
+
+function openLevel(){
+  showPage('level');
+}
+
+function setLevelExam(exam){
+  LEVEL_STATE.exam=exam;
+  document.getElementById('lv-neet-btn').style.cssText = exam==='NEET'
+    ? 'flex:1;padding:12px;border-radius:var(--r-lg);border:2px solid var(--neet);background:var(--neet-bg);color:var(--neet-dark);font-size:14px;font-weight:700;cursor:pointer;transition:all .15s'
+    : 'flex:1;padding:12px;border-radius:var(--r-lg);border:2px solid var(--border);background:var(--surface);color:var(--text2);font-size:14px;font-weight:700;cursor:pointer;transition:all .15s';
+  document.getElementById('lv-jee-btn').style.cssText = exam==='JEE'
+    ? 'flex:1;padding:12px;border-radius:var(--r-lg);border:2px solid var(--jee);background:var(--jee-bg);color:var(--jee-dark);font-size:14px;font-weight:700;cursor:pointer;transition:all .15s'
+    : 'flex:1;padding:12px;border-radius:var(--r-lg);border:2px solid var(--border);background:var(--surface);color:var(--text2);font-size:14px;font-weight:700;cursor:pointer;transition:all .15s';
+  renderLevelCards();
+}
+
+function getLevelProgress(exam){
+  const key = 'ez-level-'+exam;
+  try{ return JSON.parse(localStorage.getItem(key)||'{}'); }catch(e){ return {}; }
+}
+function saveLevelProgress(exam,data){
+  localStorage.setItem('ez-level-'+exam, JSON.stringify(data));
+}
+
+function isLevelUnlocked(exam,lvIdx){
+  if(lvIdx===0) return true;
+  const prog = getLevelProgress(exam);
+  return !!prog['level_'+(lvIdx)+'_passed'];
+}
+
+function renderLevelCards(){
+  const exam = LEVEL_STATE.exam;
+  const levels = LEVEL_CONFIG[exam];
+  const prog = getLevelProgress(exam);
+  const el = document.getElementById('level-cards');
+
+  el.innerHTML = levels.map((lv,i)=>{
+    const unlocked = isLevelUnlocked(exam,i);
+    const passed = !!prog['level_'+(i+1)+'_passed'];
+    const bestScore = prog['level_'+(i+1)+'_best']||0;
+    const color = LEVEL_COLORS[i];
+    const bg = LEVEL_BADGE_BG[i];
+    return `<div style="border:2px solid ${unlocked?color:'var(--border)'};border-radius:var(--r-xl);padding:22px;background:var(--surface);transition:all .2s;cursor:${unlocked?'pointer':'not-allowed'};opacity:${unlocked?'1':'0.55'};position:relative;overflow:hidden"
+        onclick="${unlocked?'startLevelTest('+i+')':''}"
+        onmouseenter="if(${unlocked})this.style.transform='translateY(-3px)',this.style.boxShadow='0 8px 24px rgba(0,0,0,.12)'"
+        onmouseleave="this.style.transform='',this.style.boxShadow=''">
+      <!-- Top accent bar -->
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:${color}"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div style="width:44px;height:44px;border-radius:50%;background:${bg};border:2px solid ${color};display:flex;align-items:center;justify-content:center;font-size:20px">
+          ${passed?'✅':unlocked?'🎯':'🔒'}
+        </div>
+        <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:${bg};color:${color}">${LEVEL_DIFF_LABEL[i]}</span>
+      </div>
+      <div style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:4px">${lv.name}</div>
+      <div style="font-size:12px;color:var(--text3);margin-bottom:12px;line-height:1.5">${lv.desc}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px">
+        <div style="background:var(--bg2);border-radius:7px;padding:8px;text-align:center">
+          <div style="font-size:15px;font-weight:800;color:var(--text)">${lv.questions}</div>
+          <div style="font-size:10px;color:var(--text3);margin-top:1px">Questions</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:7px;padding:8px;text-align:center">
+          <div style="font-size:15px;font-weight:800;color:var(--text)">${lv.timeMin} min</div>
+          <div style="font-size:10px;color:var(--text3);margin-top:1px">Time limit</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:7px;padding:8px;text-align:center">
+          <div style="font-size:15px;font-weight:800;color:${color}">${lv.passMark}</div>
+          <div style="font-size:10px;color:var(--text3);margin-top:1px">Pass marks</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:7px;padding:8px;text-align:center">
+          <div style="font-size:15px;font-weight:800;color:var(--text)">${lv.totalMark}</div>
+          <div style="font-size:10px;color:var(--text3);margin-top:1px">Total marks</div>
+        </div>
+      </div>
+      ${passed?`<div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:700;color:#15803d;text-align:center">✅ Passed — Best: ${bestScore} marks</div>`
+        :unlocked?`<div style="background:${bg};border:1.5px solid ${color};border-radius:8px;padding:7px 10px;font-size:12px;font-weight:700;color:${color};text-align:center">🎯 Need ${lv.passMark}/${lv.totalMark} to unlock next level</div>`
+        :`<div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;padding:7px 10px;font-size:12px;font-weight:600;color:var(--text3);text-align:center">🔒 Complete Level ${i} to unlock</div>`}
+    </div>`;
+  }).join('');
+}
+
+// NEET/JEE subject distribution for levels
+const EXAM_SUBJECT_RATIO = {
+  NEET: [
+    {subj:'Biology',   ratio:0.50},  // 50% — Biology (Botany+Zoology)
+    {subj:'Physics',   ratio:0.25},  // 25%
+    {subj:'Chemistry', ratio:0.25},  // 25%
+  ],
+  JEE: [
+    {subj:'Physics',     ratio:0.333},
+    {subj:'Chemistry',   ratio:0.333},
+    {subj:'Mathematics', ratio:0.334},
+  ]
+};
+
+function buildLevelPool(exam, lv){
+  const target = lv.questions;
+  const diff = lv.difficulty;
+  const ratios = EXAM_SUBJECT_RATIO[exam] || [{subj:null,ratio:1}];
+  const result = [];
+
+  ratios.forEach(({subj, ratio})=>{
+    const subjTarget = Math.round(target * ratio);
+
+    // Try primary difficulty first
+    let pool = QUESTIONS.filter(q =>
+      q.exam===exam &&
+      (subj ? q.subject===subj : true) &&
+      q.difficulty===diff
+    );
+
+    // If not enough, fill from other difficulties (easier first, then harder)
+    if(pool.length < subjTarget){
+      const fallback = QUESTIONS.filter(q =>
+        q.exam===exam &&
+        (subj ? q.subject===subj : true) &&
+        q.difficulty!==diff
+      ).sort(()=>Math.random()-.5);
+      pool = [...pool, ...fallback];
+    }
+
+    // If still not enough, log but continue
+    const taken = diversifyQuestions(pool, subjTarget);
+    result.push(...taken);
+  });
+
+  // If total still short (some subjects had too few), fill from any available
+  if(result.length < target){
+    const usedIds = new Set(result.map(q=>q.id||q.questionText));
+    const remaining = QUESTIONS
+      .filter(q=>q.exam===exam && !usedIds.has(q.id||q.questionText))
+      .sort(()=>Math.random()-.5);
+    result.push(...remaining.slice(0, target - result.length));
+  }
+
+  // Final shuffle so subjects aren't all grouped together
+  return result.slice(0, target).sort(()=>Math.random()-.5);
+}
+
+function startLevelTest(lvIdx){
+  const exam = LEVEL_STATE.exam;
+  const lv = LEVEL_CONFIG[exam][lvIdx];
+
+  // Build subject-distributed pool like real exam
+  const qs = buildLevelPool(exam, lv);
+  if(!qs.length){ toast('No questions available yet! Add questions in the admin panel.', false); return; }
+
+  const overlay = document.getElementById('level-test-overlay');
+  overlay.classList.remove('hidden');
+  document.body.style.overflow='hidden';
+
+  if(TEST.timer) clearInterval(TEST.timer);
+  TEST = {qs, cur:0, ans:{}, marked:{}, start:Date.now(), limit:lv.timeMin*60, timer:null, isLevel:true, levelIdx:lvIdx, levelExam:exam, levelConfig:lv};
+
+  renderLevelQ();
+  TEST.timer = setInterval(()=>{
+    const rem = Math.max(0, TEST.limit - Math.floor((Date.now()-TEST.start)/1000));
+    if(!rem){ clearInterval(TEST.timer); submitLevelTest(); }
+    const el = document.getElementById('lt-timer');
+    if(el){ el.textContent=`⏱ ${Math.floor(rem/60)}:${String(rem%60).padStart(2,'0')}`; el.classList.toggle('warn', rem<=300); }
+  }, 1000);
+}
+
+function renderLevelQ(){
+  const lv = TEST.levelConfig;
+  const q = TEST.qs[TEST.cur];
+  const n = TEST.qs.length;
+  const rem = Math.max(0, TEST.limit - Math.floor((Date.now()-TEST.start)/1000));
+  const saved = TEST.marked[TEST.cur];
+  const progress = Math.round((TEST.cur+1)/n*100);
+
+  document.getElementById('level-test-content').innerHTML = `
+    <div style="background:var(--surface);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:16px">
+      <!-- Header -->
+      <div style="background:linear-gradient(135deg,#1e3a8a,#4c1d95);padding:14px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="font-size:15px;font-weight:800;color:#fff">${lv.name}</div>
+        <span style="font-size:12px;color:rgba(255,255,255,.7)">${TEST.levelExam} · ${lv.difficulty}</span>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
+          <div style="font-size:12px;color:rgba(255,255,255,.7)">Q${TEST.cur+1}/${n}</div>
+          <div class="test-timer ${rem<=300?'warn':''}" id="lt-timer" style="font-size:14px;font-weight:800;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:5px 12px">⏱ ${Math.floor(rem/60)}:${String(rem%60).padStart(2,'0')}</div>
+        </div>
+      </div>
+      <!-- Progress bar -->
+      <div style="height:4px;background:rgba(255,255,255,.1);background-color:var(--border)"><div style="height:100%;width:${progress}%;background:linear-gradient(90deg,#2563eb,#7c3aed);transition:width .3s"></div></div>
+      <!-- Question palette -->
+      <div style="display:flex;flex-wrap:wrap;gap:4px;padding:10px 18px;background:var(--bg2);border-bottom:1px solid var(--border)">
+        ${TEST.qs.map((_,i)=>`<div style="width:24px;height:24px;border-radius:6px;border:1.5px solid ${TEST.ans[i]!==undefined?'var(--brand)':'var(--border)'};background:${TEST.ans[i]!==undefined?'var(--brand)':'var(--surface)'};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;cursor:pointer;color:${TEST.ans[i]!==undefined?'#fff':'var(--text3)'}${i===TEST.cur?';box-shadow:0 0 0 2px var(--brand),0 0 0 4px var(--brand-bg)':''}" onclick="goLevelQ(${i})">${i+1}</div>`).join('')}
+      </div>
+      <!-- Body -->
+      <div style="padding:20px">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:5px">${q.chapter||''}${q.topic?' • '+q.topic:''}</div>
+        ${q.imageUrl?`<img src="${q.imageUrl}" class="q-img" onerror="this.style.display='none'">`:''}
+        <div class="q-text">${q.questionText}</div>
+        <div class="opts-list">${(q.options||[]).map((o,i)=>`<div class="opt-row ${TEST.ans[TEST.cur]===i?'sel':''}" onclick="selLevelOpt(${i})"><div class="opt-letter">${['A','B','C','D'][i]}</div><div class="opt-text">${o}</div></div>`).join('')}</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <button class="bm-btn ${saved?'saved':''}" onclick="bmLevelQ()">📁 ${saved?'Saved':'Save to Folder'}</button>
+          ${TEST.reported&&TEST.reported[TEST.cur]?`<button style="font-size:12px;font-weight:600;color:#15803d;background:#f0fdf4;border:1.5px solid #86efac;border-radius:var(--r-sm);padding:7px 12px;cursor:default;display:flex;align-items:center;gap:5px">✓ Reported</button>`:`<button style="font-size:12px;font-weight:600;color:#dc2626;background:#fef2f2;border:1.5px solid #fca5a5;border-radius:var(--r-sm);padding:7px 12px;cursor:pointer;display:flex;align-items:center;gap:5px" onclick="openReportModal(${TEST.cur})">🚩 Report</button>`}
+          <div style="margin-left:auto;display:flex;gap:8px">
+            ${TEST.cur>0?`<button class="btn-s" onclick="goLevelQ(${TEST.cur-1})">← Prev</button>`:''}
+            ${TEST.cur<n-1?`<button class="btn-p" onclick="goLevelQ(${TEST.cur+1})">Next →</button>`:''}
+            <button class="btn-submit" onclick="submitLevelTest()">Submit ✓</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function selLevelOpt(i){
+  if(TEST.ans[TEST.cur]===i){
+    delete TEST.ans[TEST.cur]; // unselect
+  } else {
+    TEST.ans[TEST.cur]=i;
+  }
+  renderLevelQ();
+}
+function goLevelQ(i){ TEST.cur=i; renderLevelQ(); }
+function bmLevelQ(){
+  if(TEST.marked[TEST.cur]){TEST.marked[TEST.cur]=false;renderLevelQ();}
+  else{FPICK.q={...TEST.qs[TEST.cur],_qi:TEST.cur};openFolderModal();}
+}
+
+function submitLevelTest(){
+  if(TEST.timer) clearInterval(TEST.timer);
+  const lv = TEST.levelConfig;
+  const lvIdx = TEST.levelIdx;
+  const exam = TEST.levelExam;
+  let correct=0,wrong=0,skip=0;
+  TEST.qs.forEach((q,i)=>{
+    const a=TEST.ans[i];
+    if(a===undefined)skip++; else if(a===q.correctAnswer)correct++; else wrong++;
+  });
+  // Calculate marks: +4 for correct, -1 for wrong (NEET), or +4/-1 (JEE)
+  const marks = exam==='NEET' ? (correct*4 - wrong*1) : (correct*4 - wrong*1);
+  const passed = marks >= lv.passMark;
+  const pct = Math.round(correct/TEST.qs.length*100);
+
+  // Save progress
+  const prog = getLevelProgress(exam);
+  const key = 'level_'+(lvIdx+1);
+  if(!prog[key+'_best']||marks>prog[key+'_best']) prog[key+'_best']=marks;
+  if(passed) prog[key+'_passed']=true;
+  saveLevelProgress(exam, prog);
+
+  document.getElementById('level-test-content').innerHTML = `
+    <div style="background:var(--surface);border-radius:var(--r-xl);padding:32px;text-align:center;box-shadow:var(--shadow-lg)">
+      <div style="width:100px;height:100px;border-radius:50%;background:${passed?'linear-gradient(135deg,#16a34a,#22c55e)':'linear-gradient(135deg,#dc2626,#ef4444)'};margin:0 auto 20px;display:flex;align-items:center;justify-content:center;flex-direction:column;animation:pop .5s cubic-bezier(.34,1.56,.64,1)">
+        <div style="font-size:28px;font-weight:800;color:#fff;line-height:1">${marks}</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.8)">marks</div>
+      </div>
+      <div style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px">${passed?'🎉 Level Passed!':'😔 Not Passed'}</div>
+      <div style="font-size:14px;color:var(--text2);margin-bottom:6px">${lv.name} — ${exam}</div>
+      <div style="font-size:13px;color:${passed?'var(--easy)':'var(--hard)'};font-weight:600;margin-bottom:20px">
+        ${passed?`✅ You scored ${marks} marks (need ${lv.passMark}) — Level ${lvIdx+2} unlocked!`:`❌ You scored ${marks} marks — need ${lv.passMark} to pass. Try again!`}
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px">
+        <div style="background:var(--bg2);border-radius:var(--r);padding:14px;text-align:center;border:1px solid var(--border)"><div style="font-size:20px;font-weight:800;color:var(--easy)">${correct}</div><div style="font-size:11px;color:var(--text3)">Correct</div></div>
+        <div style="background:var(--bg2);border-radius:var(--r);padding:14px;text-align:center;border:1px solid var(--border)"><div style="font-size:20px;font-weight:800;color:var(--hard)">${wrong}</div><div style="font-size:11px;color:var(--text3)">Wrong</div></div>
+        <div style="background:var(--bg2);border-radius:var(--r);padding:14px;text-align:center;border:1px solid var(--border)"><div style="font-size:20px;font-weight:800;color:var(--text3)">${skip}</div><div style="font-size:11px;color:var(--text3)">Skipped</div></div>
+        <div style="background:var(--bg2);border-radius:var(--r);padding:14px;text-align:center;border:1px solid var(--border)"><div style="font-size:20px;font-weight:800;color:var(--brand)">${pct}%</div><div style="font-size:11px;color:var(--text3)">Accuracy</div></div>
+      </div>
+      <div style="font-size:13px;color:var(--text3);margin-bottom:16px">Marks formula: +4 for correct, -1 for wrong</div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-s" onclick="closeLevelTest();renderLevelCards()">← Back to Levels</button>
+        <button class="btn-p" onclick="startLevelTest(${lvIdx})">↻ Try Again</button>
+        ${passed&&lvIdx<5?`<button class="btn-green" onclick="closeLevelTest();renderLevelCards()">Next Level →</button>`:''}
+      </div>
+    </div>
+  `;
+}
+
+function closeLevelTest(){
+  if(TEST.timer) clearInterval(TEST.timer);
+  document.getElementById('level-test-overlay').classList.add('hidden');
+  document.body.style.overflow='';
+}
+
+// ══════════════ REPORT QUESTION ══════════════
+let REPORT_Q = null;
+
+function openReportModal(qIdx){
+  REPORT_Q = TEST.qs[qIdx];
+  if(!REPORT_Q) return;
+  document.getElementById('report-q-preview').textContent = (REPORT_Q.questionText||'').substring(0,100)+'...';
+  document.querySelectorAll('input[name="report-reason"]').forEach(r=>r.checked=false);
+  document.getElementById('report-details').value='';
+  const m=document.getElementById('modal-report');
+  m.style.display='flex';
+  // Mark which question is being reported for visual feedback
+  REPORT_Q._qIdx = qIdx;
+}
+function closeReportModal(){ document.getElementById('modal-report').style.display='none'; }
+document.addEventListener('DOMContentLoaded',()=>{
+  const repM=document.getElementById('modal-report'); if(repM) repM.addEventListener('click',e=>{if(e.target===repM)closeReportModal();});
+});
+
+async function submitReport(){
+  const reason = document.querySelector('input[name="report-reason"]:checked')?.value;
+  if(!reason){ toast('Please select a reason',false); return; }
+  const details = document.getElementById('report-details').value.trim();
+  const report = {
+    question_id: REPORT_Q?.id||'unknown',
+    question_text: REPORT_Q?.questionText||'',
+    reason, details,
+    exam: REPORT_Q?.exam||'',
+    subject: REPORT_Q?.subject||'',
+    chapter: REPORT_Q?.chapter||'',
+    options: JSON.stringify(REPORT_Q?.options||[]),
+    correct_answer: REPORT_Q?.correctAnswer??-1,
+    reported_at: new Date().toISOString()
+  };
+
+  // Try Supabase first (works cross-origin — GitHub Pages → Supabase)
+  let saved = false;
+  if(supabase){
+    try{
+      const {error} = await supabase.from('reports').insert(report);
+      if(!error) saved = true;
+    }catch(e){ console.warn('Supabase report save failed:', e); }
+  }
+  // Fallback: localStorage (works when both on same origin)
+  if(!saved){
+    try{
+      const lsReport = {...report, options: REPORT_Q?.options||[], reportedAt: report.reported_at};
+      const existing = JSON.parse(localStorage.getItem('ez-reports')||'[]');
+      existing.push(lsReport);
+      localStorage.setItem('ez-reports', JSON.stringify(existing));
+    }catch(e){}
+  }
+
+  // Mark question as reported so button changes to green ✓
+  if(REPORT_Q?._qIdx !== undefined){ TEST.reported = TEST.reported||{}; TEST.reported[REPORT_Q._qIdx] = reason; }
+  closeReportModal();
+  toast('✓ Reported! You can continue your test.');
+  if(TEST.qs && TEST.qs.length > 0){ if(TEST.isLevel) renderLevelQ(); else renderQ(); }
+}
+
+
+// ══════════════ TEST REVIEW (click to expand) ══════════════
+let OPEN_REVIEW = null;
+
+function toggleTestReview(idx){
+  const hist = DB.testHistory||[];
+  const h = hist[idx];
+  if(!h||!h.questions||!h.questions.length) return;
+
+  const reviewEl = document.getElementById('tr-review-'+idx);
+  const arrowEl  = document.getElementById('tr-arrow-'+idx);
+  if(!reviewEl) return;
+
+  const isOpen = !reviewEl.classList.contains('hidden');
+  // Close previously open review
+  if(OPEN_REVIEW !== null && OPEN_REVIEW !== idx){
+    const prev = document.getElementById('tr-review-'+OPEN_REVIEW);
+    const prevArr = document.getElementById('tr-arrow-'+OPEN_REVIEW);
+    if(prev) prev.classList.add('hidden');
+    if(prevArr) prevArr.textContent='▼';
+  }
+  if(isOpen){
+    reviewEl.classList.add('hidden');
+    if(arrowEl) arrowEl.textContent='▼';
+    OPEN_REVIEW = null;
+    return;
+  }
+
+  // Build topic summary
+  const topicMap = {};
+  h.questions.forEach(q=>{
+    const key = q.chapter||(q.subject||'General');
+    if(!topicMap[key]) topicMap[key]={correct:0,wrong:0,skip:0};
+    const a=q.userAnswer;
+    if(a===undefined) topicMap[key].skip++;
+    else if(a===q.correctAnswer) topicMap[key].correct++;
+    else topicMap[key].wrong++;
+  });
+
+  const topicsEl = document.getElementById('tr-topics-'+idx);
+  if(topicsEl){
+    topicsEl.innerHTML = Object.entries(topicMap).map(([k,v])=>{
+      const tot=v.correct+v.wrong+v.skip;
+      const acc=v.correct+v.wrong?Math.round(v.correct/(v.correct+v.wrong)*100):0;
+      const clr=acc>=70?'var(--easy)':acc>=45?'var(--mod)':'var(--hard)';
+      return `<div style="display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:6px 10px">
+        <div style="font-size:12px;font-weight:600;color:var(--text)">${k}</div>
+        <div style="font-size:11px;color:var(--easy)">✓${v.correct}</div>
+        <div style="font-size:11px;color:var(--hard)">✗${v.wrong}</div>
+        <div style="font-size:11px;color:${clr};font-weight:700;background:${acc>=70?'var(--easy-bg)':acc>=45?'var(--mod-bg)':'var(--hard-bg)'};padding:2px 8px;border-radius:10px">${acc}%</div>
+      </div>`;
+    }).join('');
+  }
+
+  // Build question list
+  const qsEl = document.getElementById('tr-qs-'+idx);
+  if(qsEl){
+    qsEl.innerHTML = h.questions.map((q,qi)=>{
+      const a=q.userAnswer; const isC=a===q.correctAnswer; const isS=a===undefined;
+      const rowClr=isS?'var(--border)':isC?'var(--easy-b)':'var(--hard-b)';
+      const rowBg=isS?'var(--surface)':isC?'var(--easy-bg)':'var(--hard-bg)';
+      const icon=isS?'⊘':isC?'✓':'✗';
+      const iconClr=isS?'var(--text3)':isC?'var(--easy)':'var(--hard)';
+      return `<div style="border:1.5px solid ${rowClr};border-radius:var(--r);background:var(--surface);overflow:hidden">
+        <!-- Q header -->
+        <div style="display:flex;align-items:center;gap:9px;padding:10px 12px;cursor:pointer;background:${rowBg}" onclick="toggleQDetail('qd-${idx}-${qi}')">
+          <div style="width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:${iconClr};background:var(--surface);border:1.5px solid ${rowClr};flex-shrink:0">${icon}</div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);flex:1;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${q.questionText}</div>
+          <div style="display:flex;gap:5px;flex-shrink:0;align-items:center">
+            ${q.chapter?`<span class="badge b-gray" style="font-size:10px">${q.chapter}</span>`:''}
+            ${q.topic?`<span class="badge b-gray" style="font-size:10px">${q.topic}</span>`:''}
+            <span class="badge ${q.difficulty==='Easy'?'b-easy':q.difficulty==='Hard'?'b-hard':'b-mod'}" style="font-size:10px">${q.difficulty}</span>
+            <div style="font-size:10px;color:var(--text3)">▼</div>
+          </div>
+        </div>
+        <!-- Q detail (hidden by default) -->
+        <div id="qd-${idx}-${qi}" class="hidden" style="padding:10px 12px;border-top:1px solid ${rowClr};background:var(--surface)">
+          ${q.imageUrl?`<img src="${q.imageUrl}" style="max-width:200px;border-radius:6px;border:1px solid var(--border);margin-bottom:8px;display:block" onerror="this.style.display='none'">`:''}
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.6">${q.questionText}</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px">
+            ${(q.options||[]).map((o,oi)=>{
+              let style='background:var(--surface);border:1px solid var(--border);color:var(--text2)';
+              let label='';
+              if(oi===q.correctAnswer){style='background:var(--easy-bg);border:1.5px solid var(--easy-b);color:var(--easy);font-weight:700';label=' ✓';}
+              if(oi===a&&!isC&&a!==undefined){style='background:var(--hard-bg);border:1.5px solid var(--hard-b);color:var(--hard);font-weight:700';label=' ✗ (Your answer)';}
+              return `<div style="font-size:12px;padding:6px 9px;border-radius:6px;${style}"><span style="font-weight:800;margin-right:4px">${['A','B','C','D'][oi]}.</span>${o}${label}</div>`;
+            }).join('')}
+          </div>
+          <div style="font-size:12px;color:var(--text3)">
+            ${isS?'<span style="color:var(--text3)">⊘ You skipped this question</span>':isC?'<span style="color:var(--easy);font-weight:600">✓ You got this right!</span>':`<span style="color:var(--hard);font-weight:600">✗ Wrong — correct answer: ${['A','B','C','D'][q.correctAnswer]}) ${(q.options||[])[q.correctAnswer]}</span>`}
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  reviewEl.classList.remove('hidden');
+  if(arrowEl) arrowEl.textContent='▲';
+  OPEN_REVIEW = idx;
+  reviewEl.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function toggleQDetail(id){
+  const el=document.getElementById(id); if(!el) return;
+  const isHidden=el.classList.toggle('hidden');
+  // flip arrow in header
+  const hdr=el.previousElementSibling;
+  if(hdr){const arr=hdr.querySelector('div:last-child');if(arr&&(arr.textContent==='▼'||arr.textContent==='▲'))arr.textContent=isHidden?'▼':'▲';}
+}
+
+// ══════════════ PRINT ══════════════
+function printResults(){
+  let html='<h2 style="margin-bottom:14px">Test Results — ExamZen</h2>';
+  let c=0,w=0,sk=0;TEST.qs.forEach((q,i)=>{const a=TEST.ans[i];if(a===undefined)sk++;else if(a===q.correctAnswer)c++;else w++;});
+  html+=`<p style="margin-bottom:14px;font-size:13px">Score: ${c}/${TEST.qs.length} | Correct: ${c} | Wrong: ${w} | Skipped: ${sk}</p>`;
+  TEST.qs.forEach((q,i)=>{const a=TEST.ans[i];const isC=a===q.correctAnswer;const isS=a===undefined;
+    html+=`<div style="break-inside:avoid;margin-bottom:14px;padding:10px 0;border-bottom:1px solid #e2e8f0"><div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">Q${i+1} • ${q.difficulty} ${isS?'[Skipped]':isC?'[✓ Correct]':'[✗ Wrong]'}</div><div style="font-size:14px;font-weight:600;margin-bottom:7px;line-height:1.6">${q.questionText}</div><ul style="list-style:none;padding:0">${(q.options||[]).map((o,oi)=>`<li style="padding:2px 0;font-size:13px;${oi===q.correctAnswer?'color:green;font-weight:700':oi===a&&!isC?'color:red;':''}">${['A','B','C','D'][oi]}. ${o}${oi===q.correctAnswer?' ✓':oi===a&&!isC?' ✗':''}</li>`).join('')}</ul></div>`;
+  });
+  document.getElementById('print-area').innerHTML=html;
+  setTimeout(()=>window.print(),100);
+  setTimeout(()=>document.getElementById('print-area').innerHTML='',3000);
+}
+function printFolder(){
+  const name=document.getElementById('folder-detail-name').textContent.replace('📁 ','');
+  const fi=DB.folders.findIndex(f=>f.name===name);if(fi<0)return;
+  const f=DB.folders[fi];
+  let html=`<h2>📁 ${f.name}</h2>`;
+  f.questions.forEach((q,i)=>{html+=`<div style="break-inside:avoid;margin-bottom:14px;padding:10px 0;border-bottom:1px solid #e2e8f0"><div style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">Q${i+1} • ${q.difficulty}</div><div style="font-size:14px;font-weight:600;margin-bottom:7px">${q.questionText}</div><ul style="list-style:none;padding:0">${(q.options||[]).map((o,oi)=>`<li style="padding:2px 0;font-size:13px;${oi===q.correctAnswer?'color:green;font-weight:700':''}">${['A','B','C','D'][oi]}. ${o}${oi===q.correctAnswer?' ✓':''}</li>`).join('')}</ul></div>`;});
+  document.getElementById('print-area').innerHTML=html;
+  setTimeout(()=>window.print(),100);
+  setTimeout(()=>document.getElementById('print-area').innerHTML='',3000);
+}
+</script>
+</body>
+</html>
