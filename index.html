@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ExamZen – Ace Your NEET & JEE</title>
+<title>ExamDelta – Ace Your NEET & JEE</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -356,7 +356,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px;tex
     <div>
       <div class="no-q-title">No questions loaded yet</div>
       <div class="no-q-steps">
-        <strong>Step 1:</strong> Open <strong>ExamZen-Admin.html</strong> and add questions<br>
+        <strong>Step 1:</strong> Open <strong>ExamDelta-Admin.html</strong> and add questions<br>
         <strong>Step 2:</strong> Click <strong>Export / Import → Download questions.json</strong><br>
         <strong>Step 3:</strong> Put <strong>questions.json</strong> in the <strong>same folder</strong> as this file<br>
         <strong>Step 4:</strong> Reload this page — questions will appear!
@@ -410,7 +410,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px;tex
       </div>
     </div>
   </div>
-  <footer><div class="footer-logo">Exam<span>Delta</span></div><div class="footer-sub">Powered by ExamDelta</div></footer>
+  <footer><div class="footer-logo">Exam<span>Delta</span></div><div class="footer-sub">Powered by ExamDelta · Questions loaded from local JSON file</div></footer>
 </div>
 
 <!-- FOLDERS PAGE -->
@@ -575,8 +575,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px;tex
 // ║  SUPABASE CONFIGURATION                              ║
 // ║  Paste your keys here after following the guide      ║
 // ╚══════════════════════════════════════════════════════╝
-const SUPABASE_URL = "https://uuctlmrakgvgjbabhuku.supabase.co";         // e.g. https://xxx.supabase.co
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1Y3RsbXJha2d2Z2piYWJodWt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MzA4OTUsImV4cCI6MjA5MTQwNjg5NX0.Vj8rdWeFRLRvRPv720VCS3-VW9RrLgwDlf9fpf8nPpA"; // from Supabase Settings → API
+const SUPABASE_URL = "YOUR_SUPABASE_URL";         // e.g. https://xxx.supabase.co
+const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY"; // from Supabase Settings → API
 
 // ── Supabase client (loads from CDN) ──
 let supabase = null;
@@ -606,6 +606,12 @@ const SUBJS_MAP = {
   const th=localStorage.getItem('ez-theme')||'light';
   document.getElementById('html-root').setAttribute('data-theme',th);
   document.getElementById('dark-btn').textContent=th==='dark'?'☀️':'🌙';
+  // Question Bank panel visibility
+  const qbEnabled = localStorage.getItem('ez-qbank-enabled') !== 'false';
+  if(!qbEnabled){
+    const lnk=document.getElementById('nav-qbank');
+    if(lnk) lnk.style.display='none';
+  }
   try{const d=localStorage.getItem('ez-student-db');if(d){const p=JSON.parse(d);if(p.progress)DB.progress=p.progress;if(p.folders)DB.folders=p.folders;if(p.testHistory)DB.testHistory=p.testHistory;}}catch(e){}
   loadQuestionsJSON();
 })();
@@ -678,29 +684,46 @@ function getAdminChapters(){
   try{ return JSON.parse(localStorage.getItem('ez-admin-chapters')||'{}'); }catch(e){ return {}; }
 }
 
+// Build a canonical chapter name lookup: lowercase -> admin name
+function getCanonicalChapterName(exam, rawName){
+  const adminChs = getAdminChapters();
+  const lower = rawName.toLowerCase().trim();
+  for(const key of Object.keys(adminChs)){
+    if(!key.startsWith(exam+':')) continue;
+    for(const ch of adminChs[key]){
+      if(ch.name.toLowerCase().trim() === lower) return ch.name; // use admin's casing
+    }
+  }
+  // No admin match — normalise to Title Case
+  return rawName.replace(/\b\w/g, c=>c.toUpperCase());
+}
+
 function buildChapters(exam,subj){
-  // Start with admin-defined chapters (includes empty ones)
   const adminChs = getAdminChapters();
   const subjList = subj && subj!=='All' ? [subj] : ['Physics','Chemistry','Biology','Mathematics'];
+  // map key = lowercase chapter name, value = {name(canonical), topics, subject}
   const map = {};
 
+  // Seed from admin chapters first
   subjList.forEach(sv=>{
     const key = exam+':'+sv;
     if(adminChs[key]){
       adminChs[key].forEach(ch=>{
-        if(!map[ch.name]) map[ch.name] = {name:ch.name, topics:new Set(), subject:sv};
-        ch.topics.forEach(t=>map[ch.name].topics.add(t.name));
+        const lc = ch.name.toLowerCase().trim();
+        if(!map[lc]) map[lc] = {name:ch.name, topics:new Set(), subject:sv};
+        ch.topics.forEach(t=>map[lc].topics.add(t.name));
       });
     }
   });
 
-  // Add chapters from actual questions (fills in any not in admin)
+  // Add chapters from questions — merge case-insensitively
   let qs=QUESTIONS.filter(q=>q.exam===exam);
   if(subj&&subj!=='All') qs=qs.filter(q=>q.subject===subj);
   qs.forEach(q=>{
-    const ch=q.chapter||'General';
-    if(!map[ch]) map[ch]={name:ch,topics:new Set(),subject:q.subject};
-    if(q.topic) map[ch].topics.add(q.topic);
+    const raw = q.chapter||'General';
+    const lc = raw.toLowerCase().trim();
+    if(!map[lc]) map[lc]={name:getCanonicalChapterName(exam,raw),topics:new Set(),subject:q.subject};
+    if(q.topic) map[lc].topics.add(q.topic);
   });
 
   return Object.values(map).map(c=>({name:c.name,topics:[...c.topics].map((t,i)=>({id:'t'+i,name:t}))}));
@@ -713,7 +736,10 @@ function showPage(p){
   document.getElementById('nav-'+(p==='landing'?'home':p))?.classList.add('active');
   if(p==='folders')renderFolders();
   if(p==='progress')renderProgress();
-  if(p==='qbank')renderQBank();
+  if(p==='qbank'){
+    if(localStorage.getItem('ez-qbank-enabled')==='false'){showPage('landing');return;}
+    renderQBank();
+  }
   if(p==='level'){renderLevelCards();}
   window.scrollTo(0,0);
 }
@@ -914,7 +940,7 @@ function buildChapterUI(body){
         <div class="ch-chk" id="cchk-${ci}" onclick="event.stopPropagation();tChk(${ci})"></div>
         <div class="ch-num">${ci+1}</div>
         <span class="ch-nm">${ch.name}</span>
-        <span class="ch-cnt">${QUESTIONS.filter(q=>q.chapter===ch.name&&q.exam===S.exam).length} Qs</span>
+        <span class="ch-cnt">${QUESTIONS.filter(q=>(q.chapter||'').toLowerCase()===ch.name.toLowerCase()&&q.exam===S.exam).length} Qs</span>
         <div class="ch-arr" id="charr-${ci}">›</div>
       </div>
       <div class="tp-area hidden" id="ctp-${ci}">
@@ -957,6 +983,55 @@ function tSelAll(){
   updateMpSel();
 }
 
+
+// ── Render question text — handles Match Column table format ──
+function renderQuestionText(q){
+  const text = q.questionText||'';
+
+  // Detect match column — topic tag OR text contains typical patterns
+  const isMatch = (q.topic||'').toLowerCase().includes('match') ||
+    /column[\s-]*i|column[\s-]*ii|match.*following/i.test(text);
+
+  if(!isMatch) return `<div class="q-text">${text.replace(/\n/g,'<br>')}</div>`;
+
+  // Parse the match column table
+  // Expected format stored by builder:
+  // First line: question header
+  // Then lines like "A. Term1 | (i) Description1"
+  // Or plain paragraph text if pasted raw
+  const lines = text.split('\n').map(l=>l.trim()).filter(Boolean);
+  const header = lines[0];
+
+  // Try to build a structured table from the rest
+  const rowPat = /^([A-D])[.)\s]+(.+?)\s*[|]\s*[(]([ivxlIVXL]+)[)]\s*(.+)/;
+  const tableRows = lines.slice(1).filter(l=>rowPat.test(l));
+
+  if(tableRows.length >= 2){
+    const rows = tableRows.map(l=>l.match(rowPat));
+    return `<div class="q-text">${header}</div>
+      <div style="overflow-x:auto;margin-bottom:16px">
+        <table style="width:100%;border-collapse:collapse;font-size:14px">
+          <thead>
+            <tr style="background:var(--bg3)">
+              <th style="padding:9px 14px;text-align:left;border:1px solid var(--border);font-weight:700;color:var(--text2);width:40%">Column-I</th>
+              <th style="padding:9px 14px;text-align:left;border:1px solid var(--border);font-weight:700;color:var(--text2)">Column-II</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(m=>`
+              <tr>
+                <td style="padding:9px 14px;border:1px solid var(--border);color:var(--text)"><strong>${m[1]}.</strong> ${m[2]}</td>
+                <td style="padding:9px 14px;border:1px solid var(--border);color:var(--text)"><strong>(${m[3]})</strong> ${m[4]}</td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+  }
+
+  // Fallback: render as preformatted text
+  return `<div class="q-text" style="white-space:pre-wrap;font-family:inherit">${text}</div>`;
+}
+
 // ══════════════ TEST ENGINE ══════════════
 
 function resetConfigDefaults(){
@@ -983,7 +1058,7 @@ function collectAndStart(){
     const chs=buildChapters(S.exam,S.subj==='All'?null:S.subj);
     const selC=chs.filter((_,ci)=>S.chk.ch[ci]).map(c=>c.name);
     const selT=[];chs.forEach((ch,ci)=>ch.topics.forEach((t,ti)=>{if(S.chk.tp[ci+'-'+ti])selT.push(t.name);}));
-    pool=pool.filter(q=>selC.includes(q.chapter)||(q.topic&&selT.includes(q.topic)));
+    pool=pool.filter(q=>selC.some(c=>c.toLowerCase()===(q.chapter||'').toLowerCase())||(q.topic&&selT.some(t=>t.toLowerCase()===(q.topic||'').toLowerCase())));
   }
   if(!pool.length){
     document.getElementById('mp-body').innerHTML=`<div style="padding:28px;text-align:center;color:var(--text2)"><div style="font-size:36px;margin-bottom:10px">📭</div><div style="font-size:14px;font-weight:600">No questions match your selection.</div><div style="font-size:12px;color:var(--text3);margin-top:5px">Try All Difficulties, or the admin needs to add questions for this subject.</div><br><button class="btn-s" onclick="renderStep('subj')">← Change Selection</button></div>`;
@@ -1028,7 +1103,7 @@ function renderQ(){
     <div class="test-body">
       <div style="font-size:11px;color:var(--text3);margin-bottom:5px">${q.chapter||''}${q.topic?' • '+q.topic:''}</div>
       ${q.imageUrl?`<img src="${q.imageUrl}" class="q-img" onerror="this.style.display='none'" alt="Question diagram">`:''}
-      <div class="q-text">${q.questionText}</div>
+      ${renderQuestionText(q)}
       <div class="opts-list">${(q.options||[]).map((o,i)=>`<div class="opt-row ${TEST.ans[TEST.cur]===i?'sel':''}" onclick="selOpt(${i})"><div class="opt-letter">${['A','B','C','D'][i]}</div><div class="opt-text">${o}</div></div>`).join('')}</div>
       <div class="test-actions">
         <button class="bm-btn ${saved?'saved':''}" onclick="bmQ()">📁 ${saved?'Saved':'Save to Folder'}</button>
@@ -1386,7 +1461,7 @@ function renderQBank(){
   qs.forEach(q=>{
     const examKey=q.exam||'Unknown';
     const subjKey=q.subject||'Unknown';
-    const chapKey=q.chapter||'General';
+    const chapKey=getCanonicalChapterName(examKey, q.chapter||'General');
     if(!groups[examKey]) groups[examKey]={};
     if(!groups[examKey][subjKey]) groups[examKey][subjKey]={};
     if(!groups[examKey][subjKey][chapKey]) groups[examKey][subjKey][chapKey]=[];
@@ -1954,7 +2029,7 @@ function toggleQDetail(id){
 
 // ══════════════ PRINT ══════════════
 function printResults(){
-  let html='<h2 style="margin-bottom:14px">Test Results — ExamZen</h2>';
+  let html='<h2 style="margin-bottom:14px">Test Results — ExamDelta</h2>';
   let c=0,w=0,sk=0;TEST.qs.forEach((q,i)=>{const a=TEST.ans[i];if(a===undefined)sk++;else if(a===q.correctAnswer)c++;else w++;});
   html+=`<p style="margin-bottom:14px;font-size:13px">Score: ${c}/${TEST.qs.length} | Correct: ${c} | Wrong: ${w} | Skipped: ${sk}</p>`;
   TEST.qs.forEach((q,i)=>{const a=TEST.ans[i];const isC=a===q.correctAnswer;const isS=a===undefined;
